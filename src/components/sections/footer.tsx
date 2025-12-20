@@ -1,15 +1,45 @@
 import React from 'react';
 import Link from 'next/link';
-import { Linkedin, Rss, Github } from 'lucide-react';
+import { Linkedin, Github, Youtube, Instagram, Send } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
+import { useLanguage } from '@/components/language-provider';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { language, t } = useLanguage();
 
   const links = [
-    { label: 'Home', href: '/' },
-    { label: 'Blogs', href: '/blogs' },
-    { label: 'About', href: '/about' },
+    { label: t("nav.home"), href: '/' },
+    { label: t("nav.blogs"), href: '/blogs' },
+    { label: t("nav.about"), href: '/about' },
+  ];
+
+  const socialLinks = [
+    { 
+      label: 'YouTube', 
+      href: 'https://youtube.com/@ziyodulla_abdullayev', 
+      icon: <Youtube size={16} /> 
+    },
+    { 
+      label: 'Instagram', 
+      href: 'https://instagram.com/ziyodulla__abdullayev', 
+      icon: <Instagram size={16} /> 
+    },
+    { 
+      label: 'Telegram', 
+      href: 'https://t.me/abdullayevziyodulla', 
+      icon: <Send size={16} /> 
+    },
+    { 
+      label: 'LinkedIn', 
+      href: 'https://linkedin.com/in/abdullayevziyodulla', 
+      icon: <Linkedin size={16} /> 
+    },
+    { 
+      label: 'GitHub', 
+      href: 'https://github.com/abdullayevziyodulla', 
+      icon: <Github size={16} /> 
+    },
   ];
 
   return (
@@ -24,40 +54,27 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-[16px] leading-[1.6] font-light text-muted-foreground max-w-[360px]">
-              Personal blog of Ziyodulla Abdullayev. Sharing my journey through technology, development, and life.
+              {t("footer.description")}
             </p>
             <div className="flex gap-2">
-              <a
-                href="https://linkedin.com/in/abdullayevziyodulla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-              <a
-                href="https://github.com/abdullayevziyodulla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
-                aria-label="Github"
-              >
-                <Github size={16} />
-              </a>
-              <a
-                href="/rss.xml"
-                className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
-                aria-label="RSS Feed"
-              >
-                <Rss size={16} />
-              </a>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="md:col-span-3 lg:col-span-3">
-            <h3 className="text-[16px] font-semibold text-foreground mb-5">Quick Links</h3>
+            <h3 className="text-[16px] font-semibold text-foreground mb-5">{t("footer.quick_links")}</h3>
             <ul className="flex flex-col gap-3">
               {links.map((link, index) => (
                 <li key={index}>
@@ -82,10 +99,14 @@ const Footer = () => {
                 </span>
                 <ThemeToggle />
               </div>
-              <span className="text-[14px] text-muted-foreground hidden sm:inline">•</span>
-              <p className="text-[14px] text-muted-foreground hidden sm:inline">
-                All rights reserved.
-              </p>
+              {language === "en" && (
+                <>
+                  <span className="text-[14px] text-muted-foreground hidden sm:inline">•</span>
+                  <p className="text-[14px] text-muted-foreground hidden sm:inline">
+                    {t("footer.rights")}
+                  </p>
+                </>
+              )}
             </div>
           </div>
       </div>
