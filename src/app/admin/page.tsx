@@ -3,39 +3,57 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { Loader2, ArrowLeft, LogOut } from "lucide-react";
+import { Loader2, ArrowLeft, LogOut, Plus, Trash2, Image as ImageIcon } from "lucide-react";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 
 const AdminPanel = () => {
   const [session, setSession] = useState<any>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
+  const [activeTab, setActiveTab] = useState<"blogs" | "affiliates">("blogs");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
+  // Blog states
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [blogLoading, setBlogLoading] = useState(false);
+
+  // Affiliate states
+  const [affName, setAffName] = useState("");
+  const [affDescription, setAffDescription] = useState("");
+  const [affLink, setAffLink] = useState("");
+  const [affImage, setAffImage] = useState<File | null>(null);
+  const [affLoading, setAffLoading] = useState(false);
+  const [affiliates, setAffiliates] = useState<any[]>([]);
+
   const router = useRouter();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setCheckingAuth(false);
+      if (session) fetchAffiliates();
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      if (session) fetchAffiliates();
     });
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const fetchAffiliates = async () => {
+    const { data } = await supabase.from("affiliates").select("*").order("display_order", { ascending: true });
+    if (data) setAffiliates(data);
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,9 +82,9 @@ const AdminPanel = () => {
     setSlug(val.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleBlogSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setBlogLoading(true);
 
     const { error } = await supabase.from("blogs").insert([
       { title, slug, excerpt, content },
@@ -82,7 +100,52 @@ const AdminPanel = () => {
       setContent("");
       router.push("/blogs/" + slug);
     }
-    setLoading(false);
+    setBlogLoading(false);
+  };
+
+  const handleAffiliateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAffLoading(true);
+
+    let image_url = "";
+    if (affImage) {
+      const fileName = `${Date.now()}-${affImage.name}`;
+      const { data, error: uploadError } = await supabase.storage
+        .from("affiliates")
+        .upload(fileName, affImage);
+
+      if (uploadError) {
+        alert("Error uploading image: " + uploadError.message);
+        setAffLoading(false);
+        return;
+      }
+      
+      const { data: { publicUrl } } = supabase.storage.from("affiliates").getPublicUrl(fileName);
+      image_url = publicUrl;
+    }
+
+    const { error } = await supabase.from("affiliates").insert([
+      { name: affName, description: affDescription, image_url, link_url: affLink, display_order: affiliates.length },
+    ]);
+
+    if (error) {
+      alert("Error creating affiliate: " + error.message);
+    } else {
+      alert("Affiliate added successfully!");
+      setAffName("");
+      setAffDescription("");
+      setAffLink("");
+      setAffImage(null);
+      fetchAffiliates();
+    }
+    setAffLoading(false);
+  };
+
+  const deleteAffiliate = async (id: string) => {
+    if (!confirm("Are you sure?")) return;
+    const { error } = await supabase.from("affiliates").delete().eq("id", id);
+    if (error) alert(error.message);
+    else fetchAffiliates();
   };
 
   if (checkingAuth) {
@@ -162,64 +225,176 @@ const AdminPanel = () => {
           </button>
         </div>
 
-        <h1 className="text-3xl font-medium mb-8 font-display">Create New Blog</h1>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium font-sans">Title</label>
-            <input
-              type="text"
-              value={title}
-              onChange={handleTitleChange}
-              required
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
-              placeholder="Enter blog title"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium font-sans">Slug</label>
-            <input
-              type="text"
-              value={slug}
-              onChange={(e) => setSlug(e.target.value)}
-              required
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
-              placeholder="blog-slug"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium font-sans">Excerpt</label>
-            <textarea
-              value={excerpt}
-              onChange={(e) => setExcerpt(e.target.value)}
-              rows={2}
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
-              placeholder="Short summary of the blog"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium font-sans">Content (Markdown supported)</label>
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-              rows={10}
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-mono text-sm"
-              placeholder="Write your blog content here..."
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-primary text-primary-foreground font-medium py-4 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50 font-sans"
+        <div className="flex gap-4 mb-8 border-b border-border pb-4">
+          <button 
+            onClick={() => setActiveTab("blogs")}
+            className={`text-lg font-medium transition-colors ${activeTab === "blogs" ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
           >
-            {loading ? <Loader2 className="animate-spin" /> : "Publish Blog"}
+            Blogs
           </button>
-        </form>
+          <button 
+            onClick={() => setActiveTab("affiliates")}
+            className={`text-lg font-medium transition-colors ${activeTab === "affiliates" ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+          >
+            Affiliates
+          </button>
+        </div>
+
+        {activeTab === "blogs" ? (
+          <div>
+            <h1 className="text-3xl font-medium mb-8 font-display">Create New Blog</h1>
+            <form onSubmit={handleBlogSubmit} className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Title</label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={handleTitleChange}
+                  required
+                  className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="Enter blog title"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Slug</label>
+                <input
+                  type="text"
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                  required
+                  className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="blog-slug"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Excerpt</label>
+                <textarea
+                  value={excerpt}
+                  onChange={(e) => setExcerpt(e.target.value)}
+                  rows={2}
+                  className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="Short summary of the blog"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Content (Markdown supported)</label>
+                <textarea
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  required
+                  rows={10}
+                  className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-mono text-sm"
+                  placeholder="Write your blog content here..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={blogLoading}
+                className="bg-primary text-primary-foreground font-medium py-4 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50 font-sans"
+              >
+                {blogLoading ? <Loader2 className="animate-spin" /> : "Publish Blog"}
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-3xl font-medium mb-8 font-display">Manage Affiliates</h1>
+            
+            <form onSubmit={handleAffiliateSubmit} className="flex flex-col gap-6 mb-12 bg-card border border-border p-6 rounded-xl">
+              <h2 className="text-xl font-medium mb-2 font-display">Add New Affiliate</h2>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Name</label>
+                <input
+                  type="text"
+                  value={affName}
+                  onChange={(e) => setAffName(e.target.value)}
+                  required
+                  className="bg-background border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="e.g. Frontend Masters"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Description (Your words)</label>
+                <textarea
+                  value={affDescription}
+                  onChange={(e) => setAffDescription(e.target.value)}
+                  rows={2}
+                  className="bg-background border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="e.g. Learn frontend from the masters."
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Link URL</label>
+                <input
+                  type="url"
+                  value={affLink}
+                  onChange={(e) => setAffLink(e.target.value)}
+                  className="bg-background border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
+                  placeholder="https://..."
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium font-sans">Logo/Image</label>
+                <div className="flex items-center gap-4">
+                  <label className="cursor-pointer bg-background border border-border border-dashed hover:border-primary transition-colors rounded-lg p-4 flex flex-col items-center justify-center gap-2 flex-1">
+                    <ImageIcon size={24} className="text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">{affImage ? affImage.name : "Click to upload image"}</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      onChange={(e) => setAffImage(e.target.files?.[0] || null)}
+                      className="hidden" 
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={affLoading}
+                className="bg-primary text-primary-foreground font-medium py-3 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50 font-sans"
+              >
+                {affLoading ? <Loader2 className="animate-spin" /> : "Add Affiliate"}
+              </button>
+            </form>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-medium mb-4 font-display">Existing Affiliates</h2>
+              {affiliates.length === 0 ? (
+                <p className="text-muted-foreground italic">No affiliates added yet.</p>
+              ) : (
+                affiliates.map((aff) => (
+                  <div key={aff.id} className="flex items-center justify-between bg-card border border-border p-4 rounded-xl group">
+                    <div className="flex items-center gap-4">
+                      {aff.image_url ? (
+                        <img src={aff.image_url} alt={aff.name} className="w-12 h-12 object-contain rounded bg-background p-1" />
+                      ) : (
+                        <div className="w-12 h-12 bg-muted rounded flex items-center justify-center font-bold text-xs">NO IMG</div>
+                      )}
+                      <div>
+                        <h3 className="font-medium">{aff.name}</h3>
+                        <p className="text-sm text-muted-foreground line-clamp-1 max-w-[400px]">{aff.description}</p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={() => deleteAffiliate(aff.id)}
+                      className="p-2 text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
       </main>
       <Footer />
     </div>
