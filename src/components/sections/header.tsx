@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,10 +18,14 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "About", href: "/about" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.blogs"), href: "/blogs" },
+    { label: t("nav.about"), href: "/about" },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === "uz" ? "en" : "uz");
+  };
 
   return (
     <header 
@@ -57,10 +63,12 @@ const Header = () => {
         {/* Action Buttons */}
         <div className="flex-1 flex items-center justify-end gap-2">
           <button 
-            className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-xl hover:text-primary transition-colors text-foreground"
-            aria-label="Search"
+            onClick={toggleLanguage}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors text-sm font-medium text-foreground"
+            aria-label="Toggle language"
           >
-            <Search className="w-5 h-5 stroke-[2]" />
+            <Globe className="w-4 h-4" />
+            <span>{language.toUpperCase()}</span>
           </button>
 
           {/* Mobile Menu Toggle */}
