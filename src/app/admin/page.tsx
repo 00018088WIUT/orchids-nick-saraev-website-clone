@@ -50,46 +50,46 @@ const AdminPanel = () => {
           Back
         </button>
 
-        <h1 className="text-3xl font-bold mb-8">Create New Blog</h1>
+        <h1 className="text-3xl font-medium mb-8 font-display">Create New Blog</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Title</label>
+            <label className="text-sm font-medium font-sans">Title</label>
             <input
               type="text"
               value={title}
               onChange={handleTitleChange}
               required
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors"
+              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
               placeholder="Enter blog title"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Slug</label>
+            <label className="text-sm font-medium font-sans">Slug</label>
             <input
               type="text"
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
               required
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors"
+              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
               placeholder="blog-slug"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Excerpt</label>
+            <label className="text-sm font-medium font-sans">Excerpt</label>
             <textarea
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
               rows={2}
-              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors"
+              className="bg-card border border-border rounded-lg p-3 outline-none focus:border-primary transition-colors font-sans"
               placeholder="Short summary of the blog"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium">Content (Markdown supported)</label>
+            <label className="text-sm font-medium font-sans">Content (Markdown supported)</label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -103,7 +103,7 @@ const AdminPanel = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50"
+            className="bg-primary text-primary-foreground font-medium py-4 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50 font-sans"
           >
             {loading ? <Loader2 className="animate-spin" /> : "Publish Blog"}
           </button>
