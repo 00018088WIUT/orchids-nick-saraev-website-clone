@@ -5,48 +5,48 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #1a1a1a;
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
 
-  --color-card: #ffffff;
-  --color-card-foreground: #1a1a1a;
+  --color-card: #141414;
+  --color-card-foreground: #ffffff;
 
-  --color-popover: #ffffff;
-  --color-popover-foreground: #1a1a1a;
+  --color-popover: #141414;
+  --color-popover-foreground: #ffffff;
 
-  --color-primary: #0091ff;
+  --color-primary: #f97316;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #f1f5f9;
-  --color-secondary-foreground: #1a1a1a;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #ffffff;
 
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
 
-  --color-accent: #f1f5f9;
-  --color-accent-foreground: #0091ff;
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f97316;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
 
-  --color-border: #e2e8f0;
-  --color-input: #e2e8f0;
-  --color-ring: #0091ff;
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-ring: #f97316;
 
-  --color-chart-1: #0091ff;
+  --color-chart-1: #f97316;
   --color-chart-2: #10b981;
-  --color-chart-3: #1a1a1a;
+  --color-chart-3: #ffffff;
   --color-chart-4: #f1c40f;
   --color-chart-5: #e74c3c;
 
-  --color-sidebar: #ffffff;
-  --color-sidebar-foreground: #64748b;
-  --color-sidebar-primary: #0091ff;
+  --color-sidebar: #0a0a0a;
+  --color-sidebar-foreground: #94a3b8;
+  --color-sidebar-primary: #f97316;
   --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #f1f5f9;
-  --color-sidebar-accent-foreground: #1a1a1a;
-  --color-sidebar-border: #e2e8f0;
-  --color-sidebar-ring: #0091ff;
+  --color-sidebar-accent: #1e293b;
+  --color-sidebar-accent-foreground: #ffffff;
+  --color-sidebar-border: #262626;
+  --color-sidebar-ring: #f97316;
 
   --radius-lg: 0.75rem;
   --radius-md: calc(0.75rem - 2px);
@@ -57,10 +57,10 @@
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
-  --color-brand: #0091ff;
-  --color-typ: #1a1a1a;
-  --color-typ-tone: #64748b;
-  --color-bgr-tone: #f1f5f9;
+  --color-brand: #f97316;
+  --color-typ: #ffffff;
+  --color-typ-tone: #94a3b8;
+  --color-bgr-tone: #141414;
   --color-success: #10b981;
 
   --font-sans: "Inter", sans-serif;
@@ -90,38 +90,38 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: #e2e8f0;
+    border-color: #262626;
   }
 
   :root {
-    --background: #ffffff;
-    --foreground: #1a1a1a;
-    --card: #ffffff;
-    --card-foreground: #1a1a1a;
-    --popover: #ffffff;
-    --popover-foreground: #1a1a1a;
-    --primary: #0091ff;
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --card: #141414;
+    --card-foreground: #ffffff;
+    --popover: #141414;
+    --popover-foreground: #ffffff;
+    --primary: #f97316;
     --primary-foreground: #ffffff;
-    --secondary: #f1f5f9;
-    --secondary-foreground: #1a1a1a;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --accent: #f1f5f9;
-    --accent-foreground: #0091ff;
+    --secondary: #1e293b;
+    --secondary-foreground: #ffffff;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --accent: #1e293b;
+    --accent-foreground: #f97316;
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #0091ff;
+    --border: #262626;
+    --input: #262626;
+    --ring: #f97316;
     --radius: 0.75rem;
-    --sidebar-background: #ffffff;
-    --sidebar-foreground: #64748b;
-    --sidebar-primary: #0091ff;
+    --sidebar-background: #0a0a0a;
+    --sidebar-foreground: #94a3b8;
+    --sidebar-primary: #f97316;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #f1f5f9;
-    --sidebar-accent-foreground: #1a1a1a;
-    --sidebar-border: #e2e8f0;
-    --sidebar-ring: #0091ff;
+    --sidebar-accent: #1e293b;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #262626;
+    --sidebar-ring: #f97316;
   }
 }
 
@@ -132,6 +132,7 @@
 
   html {
     scroll-behavior: smooth;
+    @apply dark;
   }
 
   body {
@@ -194,11 +195,11 @@
 @layer utilities {
   .backdrop-blur-nav {
     backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(10, 10, 10, 0.8);
   }
 
   .shadow-pill {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   }
 
   .transition-soft {
