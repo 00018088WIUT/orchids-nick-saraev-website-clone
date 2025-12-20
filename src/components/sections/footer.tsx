@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { Linkedin, Github, Youtube, Instagram, Send } from 'lucide-react';
