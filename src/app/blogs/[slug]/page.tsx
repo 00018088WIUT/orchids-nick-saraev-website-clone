@@ -36,29 +36,29 @@ export default async function BlogPage({ params }: BlogPageProps) {
           Back to Blogs
         </Link>
 
-        <article className="prose prose-invert prose-orange max-w-none">
-          <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{blog.title}</h1>
-            <div className="flex items-center gap-4 text-muted-foreground">
-              <span>{new Date(blog.created_at).toLocaleDateString()}</span>
-              <span>•</span>
-              <div className="flex items-center gap-2">
-                <div className="size-6 rounded-full overflow-hidden border border-border">
-                  <img
-                    src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=f97316`}
-                    alt="Ziyodulla"
-                    className="w-full h-full object-cover"
-                  />
+          <article className="prose prose-invert prose-blue max-w-none">
+            <header className="mb-12">
+              <h1 className="text-4xl md:text-5xl font-medium mb-4">{blog.title}</h1>
+              <div className="flex items-center gap-4 text-muted-foreground">
+                <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                <span>•</span>
+                <div className="flex items-center gap-2">
+                  <div className="size-6 rounded-full overflow-hidden border border-border">
+                    <img
+                      src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
+                      alt="Ziyodulla"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">Ziyodulla Abdullayev</span>
                 </div>
-                <span className="text-sm font-medium text-foreground">Ziyodulla Abdullayev</span>
               </div>
-            </div>
-          </header>
+            </header>
 
-          <div className="text-lg leading-relaxed">
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
-          </div>
-        </article>
+            <div className="text-lg leading-relaxed font-light">
+              <ReactMarkdown>{blog.content}</ReactMarkdown>
+            </div>
+          </article>
       </main>
       <Footer />
     </div>

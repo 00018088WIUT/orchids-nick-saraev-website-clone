@@ -66,11 +66,11 @@ const LatestFeed: React.FC = () => {
                     {new Date(post.created_at).toLocaleDateString()}
                   </span>
                   <div className="size-8 rounded-full overflow-hidden border border-border bg-card">
-                    <img
-                      src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=f97316`}
-                      alt="Author"
-                      className="w-full h-full object-cover"
-                    />
+                      <img
+                        src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
+                        alt="Author"
+                        className="w-full h-full object-cover"
+                      />
                   </div>
                 </div>
               </a>
