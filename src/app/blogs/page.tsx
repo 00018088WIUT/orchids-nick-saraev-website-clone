@@ -38,11 +38,11 @@ export default async function BlogsPage() {
                   </p>
                   <div className="flex items-center gap-2 mt-auto">
                     <div className="size-6 rounded-full overflow-hidden border border-border">
-                      <img
-                        src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=f97316`}
-                        alt="Ziyodulla"
-                        className="w-full h-full object-cover"
-                      />
+                        <img
+                          src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
+                          alt="Ziyodulla"
+                          className="w-full h-full object-cover"
+                        />
                     </div>
                     <span className="text-xs font-medium text-foreground">Ziyodulla Abdullayev</span>
                   </div>
