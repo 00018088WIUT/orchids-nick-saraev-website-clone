@@ -74,14 +74,20 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
-          <div className="flex items-center gap-4">
-            <p className="text-[14px] text-muted-foreground">
-              ©{currentYear} Ziyodulla Abdullayev. All rights reserved.
-            </p>
-            <ThemeToggle />
+          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[14px] text-muted-foreground">
+                  © {currentYear} Ziyodulla Abdullayev
+                </span>
+                <ThemeToggle />
+              </div>
+              <span className="text-[14px] text-muted-foreground hidden sm:inline">•</span>
+              <p className="text-[14px] text-muted-foreground hidden sm:inline">
+                All rights reserved.
+              </p>
+            </div>
           </div>
-        </div>
       </div>
     </footer>
   );
