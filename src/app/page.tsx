@@ -1,6 +1,7 @@
 import Header from "@/components/sections/header";
 import HeroSection from "@/components/sections/hero";
 import Footer from "@/components/sections/footer";
+import LatestFeed from "@/components/sections/latest-feed";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        {/* Blog section will be added here after Supabase setup */}
+        <LatestFeed />
       </main>
       <Footer />
     </div>
