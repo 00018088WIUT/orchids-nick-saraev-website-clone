@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Twitter, Rss, Github } from 'lucide-react';
+import { Linkedin, Rss, Github } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
 
 const Footer = () => {
@@ -28,16 +28,16 @@ const Footer = () => {
             </p>
             <div className="flex gap-2">
               <a
-                href="https://twitter.com"
+                href="https://linkedin.com/in/abdullayevziyodulla"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
-                aria-label="Twitter"
+                aria-label="LinkedIn"
               >
-                <Twitter size={16} />
+                <Linkedin size={16} />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/abdullayevziyodulla"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all hover:text-primary hover:border-primary"
