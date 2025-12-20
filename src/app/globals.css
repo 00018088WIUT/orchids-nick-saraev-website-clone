@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -14,7 +14,7 @@
   --color-popover: #141414;
   --color-popover-foreground: #ffffff;
 
-  --color-primary: #f97316;
+  --color-primary: #60a5fa;
   --color-primary-foreground: #ffffff;
 
   --color-secondary: #1e293b;
@@ -24,16 +24,16 @@
   --color-muted-foreground: #94a3b8;
 
   --color-accent: #1e293b;
-  --color-accent-foreground: #f97316;
+  --color-accent-foreground: #60a5fa;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
 
   --color-border: #262626;
   --color-input: #262626;
-  --color-ring: #f97316;
+  --color-ring: #60a5fa;
 
-  --color-chart-1: #f97316;
+  --color-chart-1: #60a5fa;
   --color-chart-2: #10b981;
   --color-chart-3: #ffffff;
   --color-chart-4: #f1c40f;
@@ -41,12 +41,12 @@
 
   --color-sidebar: #0a0a0a;
   --color-sidebar-foreground: #94a3b8;
-  --color-sidebar-primary: #f97316;
+  --color-sidebar-primary: #60a5fa;
   --color-sidebar-primary-foreground: #ffffff;
   --color-sidebar-accent: #1e293b;
   --color-sidebar-accent-foreground: #ffffff;
-  --color-sidebar-border: #262626;
-  --color-sidebar-ring: #f97316;
+  --sidebar-border: #262626;
+  --sidebar-ring: #60a5fa;
 
   --radius-lg: 0.75rem;
   --radius-md: calc(0.75rem - 2px);
@@ -57,14 +57,14 @@
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
-  --color-brand: #f97316;
+  --color-brand: #60a5fa;
   --color-typ: #ffffff;
   --color-typ-tone: #94a3b8;
   --color-bgr-tone: #141414;
   --color-success: #10b981;
 
   --font-sans: "Inter", sans-serif;
-  --font-display: "Inter", sans-serif;
+  --font-display: "Poppins", sans-serif;
 
   @keyframes accordion-down {
     from {
@@ -100,28 +100,28 @@
     --card-foreground: #ffffff;
     --popover: #141414;
     --popover-foreground: #ffffff;
-    --primary: #f97316;
+    --primary: #60a5fa;
     --primary-foreground: #ffffff;
     --secondary: #1e293b;
     --secondary-foreground: #ffffff;
     --muted: #1e293b;
     --muted-foreground: #94a3b8;
     --accent: #1e293b;
-    --accent-foreground: #f97316;
+    --accent-foreground: #60a5fa;
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
     --border: #262626;
     --input: #262626;
-    --ring: #f97316;
+    --ring: #60a5fa;
     --radius: 0.75rem;
     --sidebar-background: #0a0a0a;
     --sidebar-foreground: #94a3b8;
-    --sidebar-primary: #f97316;
+    --sidebar-primary: #60a5fa;
     --sidebar-primary-foreground: #ffffff;
     --sidebar-accent: #1e293b;
     --sidebar-accent-foreground: #ffffff;
     --sidebar-border: #262626;
-    --sidebar-ring: #f97316;
+    --sidebar-ring: #60a5fa;
   }
 }
 
@@ -140,19 +140,22 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
     background-color: #0a0a0a;
+    line-height: 1.7;
   }
 
   h1, .hero-headline {
+    font-family: var(--font-display);
     font-size: 4rem;
-    font-weight: 600;
-    line-height: 1.1;
+    font-weight: 500;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--color-typ);
   }
 
   h2, .section-header {
+    font-family: var(--font-display);
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -160,6 +163,7 @@
   }
 
   .post-title {
+    font-family: var(--font-display);
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.4;
@@ -168,8 +172,8 @@
 
   .body-text {
     font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.8;
     color: var(--color-typ-tone);
   }
 
