@@ -42,40 +42,40 @@ const AffiliatesSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {affiliates.map((aff) => (
-            <a
-              key={aff.id}
-              href={aff.link_url || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-5 p-6 rounded-xl border border-border/50 bg-card/20 hover:bg-card/40 transition-all"
-            >
-              <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-background rounded-lg border border-border overflow-hidden">
-                {aff.image_url ? (
-                  <img
-                    src={aff.image_url}
-                    alt={aff.name}
-                    className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="text-xl font-bold opacity-20">
-                    {aff.name.substring(0, 2).toUpperCase()}
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <h3 className="text-[17px] font-semibold text-foreground mb-1 group-hover:text-primary transition-colors lowercase">
-                  {aff.name}
-                </h3>
-                <p className="text-[14px] text-muted-foreground leading-relaxed lowercase">
-                  {aff.description}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {affiliates.map((aff) => (
+              <a
+                key={aff.id}
+                href={aff.link_url || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-8 p-8 rounded-2xl bg-[#262626] hover:bg-[#2c2c2c] transition-all"
+              >
+                <div className="flex-shrink-0 w-28 h-28 flex items-center justify-center overflow-hidden">
+                  {aff.image_url ? (
+                    <img
+                      src={aff.image_url}
+                      alt={aff.name}
+                      className="w-full h-full object-contain filter brightness-110"
+                    />
+                  ) : (
+                    <div className="text-4xl font-bold opacity-10 text-white">
+                      {aff.name.substring(0, 2).toUpperCase()}
+                    </div>
+                  )}
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-[20px] font-bold text-white mb-2 lowercase">
+                    {aff.name}
+                  </h3>
+                  <p className="text-[16px] text-[#A3A3A3] leading-snug lowercase">
+                    {aff.description}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
       </div>
     </section>
   );
