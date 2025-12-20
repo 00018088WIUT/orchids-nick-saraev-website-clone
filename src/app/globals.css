@@ -133,11 +133,13 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    background-color: #0a0a0a;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    background-color: #0a0a0a;
   }
 
   h1, .hero-headline {
