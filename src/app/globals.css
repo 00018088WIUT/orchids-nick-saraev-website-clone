@@ -85,14 +85,14 @@
   }
 }
 
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: #262626;
-  }
+  @layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      border-color: #e2e8f0;
+    }
 
     :root {
       --background: #ffffff;
