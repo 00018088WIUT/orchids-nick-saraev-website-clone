@@ -1,3 +1,6 @@
+import React from 'react';
+import Link from 'next/link';
+import { Twitter, Rss, Github } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
 
 const Footer = () => {
@@ -72,9 +75,12 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
-          <p className="text-[14px] text-muted-foreground">
-            ©{currentYear} Ziyodulla Abdullayev. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-[14px] text-muted-foreground">
+              ©{currentYear} Ziyodulla Abdullayev. All rights reserved.
+            </p>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </footer>
