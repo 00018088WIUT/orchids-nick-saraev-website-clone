@@ -213,4 +213,4 @@ const LatestFeed: React.FC = () => {
   );
 };
 
-export default LatestFeed;"
+export default LatestFeed;
