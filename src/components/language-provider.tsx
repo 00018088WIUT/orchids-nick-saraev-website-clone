@@ -25,7 +25,7 @@ const translations = {
     "nav.about": "About",
     "footer.quick_links": "Quick Links",
     "footer.description": "Personal blog of Ziyodulla Abdullayev. Sharing my journey through technology, development, and life.",
-    "footer.rights": "All rights reserved.",
+    "footer.rights": "",
   },
 };
 
