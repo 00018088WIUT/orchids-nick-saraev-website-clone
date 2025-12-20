@@ -6,48 +6,48 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
 
-  --color-card: #141414;
-  --color-card-foreground: #ffffff;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
 
-  --color-popover: #141414;
-  --color-popover-foreground: #ffffff;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
 
-  --color-primary: #60a5fa;
+  --color-primary: #2563eb;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #1e293b;
-  --color-secondary-foreground: #ffffff;
+  --color-secondary: #f8fafc;
+  --color-secondary-foreground: #0f172a;
 
-  --color-muted: #1e293b;
-  --color-muted-foreground: #94a3b8;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
 
-  --color-accent: #1e293b;
-  --color-accent-foreground: #60a5fa;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #2563eb;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
 
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #60a5fa;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #2563eb;
 
-  --color-chart-1: #60a5fa;
+  --color-chart-1: #2563eb;
   --color-chart-2: #10b981;
-  --color-chart-3: #ffffff;
+  --color-chart-3: #0f172a;
   --color-chart-4: #f1c40f;
   --color-chart-5: #e74c3c;
 
-  --color-sidebar: #0a0a0a;
-  --color-sidebar-foreground: #94a3b8;
-  --color-sidebar-primary: #60a5fa;
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #64748b;
+  --color-sidebar-primary: #2563eb;
   --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #1e293b;
-  --color-sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #262626;
-  --sidebar-ring: #60a5fa;
+  --color-sidebar-accent: #f8fafc;
+  --color-sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #2563eb;
 
   --radius-lg: 0.75rem;
   --radius-md: calc(0.75rem - 2px);
@@ -58,10 +58,10 @@
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
-  --color-brand: #60a5fa;
-  --color-typ: #ffffff;
-  --color-typ-tone: #94a3b8;
-  --color-bgr-tone: #141414;
+  --color-brand: #2563eb;
+  --color-typ: #0f172a;
+  --color-typ-tone: #64748b;
+  --color-bgr-tone: #f8fafc;
   --color-success: #10b981;
 
   --font-sans: "Inter", sans-serif;
