@@ -1,6 +1,4 @@
-import React from 'react';
-import Link from 'next/link';
-import { Twitter, Rss, Github } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
