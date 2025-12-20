@@ -5,8 +5,8 @@ import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Nick Saraev",
-  description: "Your straight-line path to a thriving AI & automation business.",
+  title: "Ziyodulla Abdullayev",
+  description: "Personal blog and portfolio of Ziyodulla Abdullayev.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className="antialiased">
         <Script
           id="orchids-browser-logs"
