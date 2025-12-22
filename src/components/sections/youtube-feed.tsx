@@ -1,6 +1,6 @@
 import React from "react";
 import YouTubeContent from "./youtube-content";
-import { translations } from "@/components/language-provider";
+import { translations, Language } from "@/lib/translations";
 
 interface YouTubeVideo {
   id: string;
