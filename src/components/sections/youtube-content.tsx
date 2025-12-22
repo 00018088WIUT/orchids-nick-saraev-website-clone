@@ -14,10 +14,9 @@ interface YouTubeVideo {
 interface YouTubeContentProps {
   videos: YouTubeVideo[];
   title: string;
-  moreText: string;
 }
 
-export default function YouTubeContent({ videos, title, moreText }: YouTubeContentProps) {
+export default function YouTubeContent({ videos, title }: YouTubeContentProps) {
   return (
     <section className="px-4 sm:px-6 mb-24">
       <div className="max-w-[1200px] mx-auto">
@@ -25,15 +24,6 @@ export default function YouTubeContent({ videos, title, moreText }: YouTubeConte
           <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground">
             {title}
           </h2>
-          <a
-            href="https://www.youtube.com/@ziyodulla_abdullayev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[12px] font-medium text-primary hover:underline flex items-center gap-1.5"
-          >
-            <FaYoutube className="text-sm text-[#FF0000]" />
-            {moreText}
-          </a>
         </div>
 
         <div className={videos.length === 1 ? "max-w-[800px] mx-auto" : "grid grid-cols-1 md:grid-cols-3 gap-6"}>
