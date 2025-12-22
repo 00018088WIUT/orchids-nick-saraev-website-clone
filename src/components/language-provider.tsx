@@ -21,6 +21,7 @@ const translations = {
     "hero.subscribe": "Obuna bo'lish",
     "feed.title": "Oxirgi maqolalar",
     "feed.no_posts": "Hozircha maqolalar yo'q.",
+    "affiliates.title": "Hamkorlik va foydali uskunalar",
     "footer.quick_links": "Tezkor linklar",
     "footer.description": "Ziyodulla Abdullayevning shaxsiy blogi. Texnologiya, dasturlash va hayotdagi sayohatim haqida.",
     "footer.rights": "",
