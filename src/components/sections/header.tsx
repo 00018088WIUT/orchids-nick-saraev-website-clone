@@ -1,46 +1,54 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
-import { useLanguage } from "@/components/language-provider";
+  import React, { useState, useEffect } from "react";
+  import { Menu, X, Globe } from "lucide-react";
+  import { useLanguage } from "@/components/language-provider";
+  import Image from "next/image";
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const Header = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { language, setLanguage, t } = useLanguage();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const navItems = [
+      { label: t("nav.about"), href: "/about" },
+      { label: t("nav.blogs"), href: "/blogs" },
+    ];
+
+    const toggleLanguage = () => {
+      setLanguage(language === "uz" ? "en" : "uz");
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  const navItems = [
-    { label: t("nav.home"), href: "/" },
-    { label: t("nav.blogs"), href: "/blogs" },
-    { label: t("nav.about"), href: "/about" },
-  ];
-
-  const toggleLanguage = () => {
-    setLanguage(language === "uz" ? "en" : "uz");
-  };
-
-  return (
-    <header 
-      className={`sticky top-0 z-[1000] w-full px-4 sm:px-6 transition-colors duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'}`}
-    >
-      <div className="max-w-[1200px] mx-auto py-4 md:py-6 flex items-center justify-between gap-4 relative">
-        
-        {/* Logo Section */}
-        <div className="flex-1 flex justify-start">
-          <a href="/" className="block shrink-0">
-            <span className="text-xl font-bold tracking-tight text-foreground">
-              Ziyodulla<span className="text-primary">.</span>
-            </span>
-          </a>
-        </div>
+    return (
+      <header 
+        className={`sticky top-0 z-[1000] w-full px-4 sm:px-6 transition-colors duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'}`}
+      >
+        <div className="max-w-[1200px] mx-auto py-4 md:py-6 flex items-center justify-between gap-4 relative">
+          
+          {/* Logo Section */}
+          <div className="flex-1 flex justify-start items-center gap-3">
+            <a href="/" className="flex items-center gap-2 shrink-0">
+              <div className="relative w-8 h-8 rounded-md overflow-hidden border border-border">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1766425144441.png?width=200&height=200&resize=contain"
+                  alt="Ziyodulla"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-xl font-bold tracking-tight text-foreground">
+                Ziyodulla
+              </span>
+            </a>
+          </div>
 
         {/* Desktop Navigation Pill */}
         <nav 
