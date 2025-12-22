@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { FaYoutube } from "react-icons/fa";
 
 interface YouTubeVideo {
   id: string;
