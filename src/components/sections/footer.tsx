@@ -120,15 +120,6 @@
               <Globe className="w-3.5 h-3.5" />
               <span>{language.toUpperCase()}</span>
             </button>
-          </div>
-              {language === "en" && (
-                <>
-                  <span className="text-[14px] text-muted-foreground hidden sm:inline">•</span>
-                  <p className="text-[14px] text-muted-foreground hidden sm:inline">
-                    {t("footer.rights")}
-                  </p>
-                </>
-              )}
             </div>
           </div>
       </div>
