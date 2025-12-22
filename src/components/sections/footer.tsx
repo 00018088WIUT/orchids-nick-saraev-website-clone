@@ -65,6 +65,9 @@
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-[64px]">
             {/* Brand Column */}
             <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
+              <p className="text-[16px] leading-[1.6] font-light text-muted-foreground max-w-[360px]">
+                {t("footer.description")}
+              </p>
             <div className="flex gap-2">
               {socialLinks.map((social) => (
                 <a
