@@ -23,8 +23,10 @@ const translations = {
       "hero.email_placeholder": "email kiriting",
       "feed.title": "Oxirgi maqolalar",
       "feed.no_posts": "Hozircha maqolalar yo'q.",
-      "feed.all_blogs": "Barcha maqolalar",
-      "affiliates.title": "Hamkorlik va foydali uskunalar",
+        "feed.all_blogs": "Barcha maqolalar",
+        "youtube.title": "Oxirgi YouTube videolari",
+        "youtube.more": "YouTube'da ko'rish",
+        "affiliates.title": "Hamkorlik va foydali uskunalar",
       "footer.quick_links": "Havolalar",
       "footer.description": "Ziyodulla Abdullayevning shaxsiy blogi.",
       "footer.rights": ""
