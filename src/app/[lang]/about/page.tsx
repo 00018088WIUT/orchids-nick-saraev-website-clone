@@ -5,7 +5,7 @@ import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { useLanguage } from "@/components/language-provider";
 
-export default function AboutPage() {
+export default function AboutPage({ params }: { params: Promise<{ lang: string }> }) {
   const { t } = useLanguage();
 
   return (
