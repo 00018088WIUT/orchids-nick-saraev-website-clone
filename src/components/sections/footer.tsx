@@ -107,24 +107,25 @@
         {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
             <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[14px] text-muted-foreground">
-              © {currentYear} Ziyodulla Abdullayev
-            </span>
-            <ThemeToggle />
-            <button 
-              onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors text-xs font-medium text-foreground ml-2"
-              aria-label="Toggle language"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>{language.toUpperCase()}</span>
-            </button>
+              <div className="flex items-center gap-2">
+                <span className="text-[14px] text-muted-foreground">
+                  © {currentYear} Ziyodulla Abdullayev
+                </span>
+                <ThemeToggle />
+                <button 
+                  onClick={toggleLanguage}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors text-xs font-medium text-foreground ml-2"
+                  aria-label="Toggle language"
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>{language.toUpperCase()}</span>
+                </button>
+              </div>
             </div>
           </div>
-      </div>
-    </footer>
-  );
-};
+        </div>
+      </footer>
+    );
+  };
 
 export default Footer;
