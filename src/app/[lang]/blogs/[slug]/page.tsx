@@ -8,16 +8,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface BlogPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
 
   const { data: blog, error } = await supabase
     .from("blogs")
     .select("*")
     .eq("slug", slug)
+    .eq("language", lang)
     .single();
 
   if (error || !blog) {
@@ -29,7 +30,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <Header />
       <main className="flex-1 max-w-[800px] mx-auto w-full py-12 px-4">
         <Link 
-          href="/blogs"
+          href={`/${lang}/blogs`}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
