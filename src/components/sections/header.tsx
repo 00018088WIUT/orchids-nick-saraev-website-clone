@@ -65,7 +65,7 @@
         <div className="flex-1 flex items-center justify-end gap-2">
           <button 
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors text-sm font-medium text-foreground"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted cursor-pointer transition-colors text-sm font-medium text-foreground"
             aria-label="Toggle language"
           >
             <Globe className="w-4 h-4" />

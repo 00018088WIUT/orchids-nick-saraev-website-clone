@@ -111,11 +111,11 @@ const Footer = () => {
                 © {currentYear} Ziyodulla Abdullayev
               </span>
               <ThemeToggle />
-              <button 
-                onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors text-xs font-medium text-foreground ml-2"
-                aria-label="Toggle language"
-              >
+                <button 
+                  onClick={toggleLanguage}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted cursor-pointer transition-colors text-xs font-medium text-foreground ml-2"
+                  aria-label="Toggle language"
+                >
                 <Globe className="w-3.5 h-3.5" />
                 <span>{language.toUpperCase()}</span>
               </button>
