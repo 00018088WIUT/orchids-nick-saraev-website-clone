@@ -19,13 +19,14 @@ interface Post {
 export default function BlogsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const fetchPosts = async () => {
       const { data, error } = await supabase
         .from("blogs")
         .select("*")
+        .eq("language", language)
         .order("created_at", { ascending: false });
       
       if (data) setPosts(data);
@@ -33,7 +34,7 @@ export default function BlogsPage() {
     };
 
     fetchPosts();
-  }, []);
+  }, [language]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -53,7 +54,7 @@ export default function BlogsPage() {
               posts.map((post) => (
                 <Link
                   key={post.id}
-                  href={`/blogs/${post.slug}`}
+                  href={`/${language}/blogs/${post.slug}`}
                   className="group block"
                 >
                   <div className="flex flex-col gap-3">
