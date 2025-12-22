@@ -4,7 +4,8 @@ import Footer from "@/components/sections/footer";
 import LatestFeed from "@/components/sections/latest-feed";
 import AffiliatesSection from "@/components/sections/affiliates-section";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
