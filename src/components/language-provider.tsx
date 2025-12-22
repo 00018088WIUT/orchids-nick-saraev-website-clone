@@ -1,6 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useParams, useRouter, usePathname } from "next/navigation";
 
 type Language = "uz" | "en";
 
