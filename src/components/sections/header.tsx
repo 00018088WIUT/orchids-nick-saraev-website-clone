@@ -33,22 +33,15 @@
       >
         <div className="max-w-[1200px] mx-auto py-4 md:py-6 flex items-center justify-between gap-4 relative">
           
-          {/* Logo Section */}
-          <div className="flex-1 flex justify-start items-center gap-3">
-            <a href="/" className="flex items-center gap-2 shrink-0">
-              <div className="relative w-8 h-8 rounded-md overflow-hidden border border-border">
-                <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1766425144441.png?width=200&height=200&resize=contain"
-                  alt="Ziyodulla"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-foreground">
-                Ziyodulla
-              </span>
-            </a>
-          </div>
+            {/* Logo Section */}
+            <div className="flex-1 flex justify-start items-center gap-3">
+              <a href="/" className="flex items-center gap-2 shrink-0">
+                <span className="text-xl font-bold tracking-tight text-foreground">
+                  Ziyodulla
+                </span>
+              </a>
+            </div>
+
 
         {/* Desktop Navigation Pill */}
         <nav 
