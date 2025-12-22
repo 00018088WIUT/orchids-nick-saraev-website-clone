@@ -102,7 +102,21 @@
                 <p 
                   className="font-light text-muted-foreground text-base md:text-lg leading-[1.8] font-sans"
                 >
-                  {t("hero.description")}
+                  {t("hero.description").split("Scrimba.com").map((part, i, arr) => (
+                    <React.Fragment key={i}>
+                      {part}
+                      {i < arr.length - 1 && (
+                        <a 
+                          href="https://scrimba.com/?via=u01a3gb" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline font-medium"
+                        >
+                          Scrimba.com
+                        </a>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </p>
               </div>
 
