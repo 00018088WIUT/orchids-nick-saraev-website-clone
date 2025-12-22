@@ -179,7 +179,6 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.5;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--color-muted-foreground);
   }
