@@ -51,7 +51,27 @@ const translations = {
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: {children: React.ReactNode;}) => {
-  const [language, setLanguage] = useState<Language>("uz");
+  const params = useParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [language, setLanguageState] = useState<Language>((params?.lang as Language) || "en");
+
+  useEffect(() => {
+    if (params?.lang && (params.lang === "uz" || params.lang === "en")) {
+      const lang = params.lang as Language;
+      setLanguageState(lang);
+      localStorage.setItem("language", lang);
+      document.cookie = `language=${lang}; path=/; max-age=31536000`;
+    }
+  }, [params?.lang]);
+
+  const setLanguage = (lang: Language) => {
+    const segments = pathname.split("/");
+    // pathname starts with /, so segments[0] is "", segments[1] is the locale
+    segments[1] = lang;
+    const newPath = segments.join("/");
+    router.push(newPath);
+  };
 
   const t = (key: string) => {
     return translations[language][key as keyof typeof translations["en"]] || key;
