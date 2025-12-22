@@ -1,60 +1,75 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { Linkedin, Github, Youtube, Instagram, Send } from 'lucide-react';
-import { ThemeToggle } from '../theme-toggle';
-import { useLanguage } from '@/components/language-provider';
+  import React from 'react';
+  import Link from 'next/link';
+  import { Linkedin, Github, Youtube, Instagram } from 'lucide-react';
+  import { ThemeToggle } from '../theme-toggle';
+  import { useLanguage } from '@/components/language-provider';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const { language, t } = useLanguage();
+  const TelegramIcon = ({ size = 24 }: { size?: number }) => (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+    >
+      <path d="M22 2L11 13" />
+      <path d="M22 2L15 22L11 13L2 9L22 2z" />
+    </svg>
+  );
 
-  const links = [
-    { label: t("nav.home"), href: '/' },
-    { label: t("nav.blogs"), href: '/blogs' },
-    { label: t("nav.about"), href: '/about' },
-  ];
+  const Footer = () => {
+    const currentYear = new Date().getFullYear();
+    const { language, t } = useLanguage();
 
-  const socialLinks = [
-    { 
-      label: 'YouTube', 
-      href: 'https://youtube.com/@ziyodulla_abdullayev', 
-      icon: <Youtube size={16} /> 
-    },
-    { 
-      label: 'Instagram', 
-      href: 'https://instagram.com/ziyodulla__abdullayev', 
-      icon: <Instagram size={16} /> 
-    },
-    { 
-      label: 'Telegram', 
-      href: 'https://t.me/abdullayevziyodulla', 
-      icon: <Send size={16} /> 
-    },
-    { 
-      label: 'LinkedIn', 
-      href: 'https://linkedin.com/in/abdullayevziyodulla', 
-      icon: <Linkedin size={16} /> 
-    },
-    { 
-      label: 'GitHub', 
-      href: 'https://github.com/abdullayevziyodulla', 
-      icon: <Github size={16} /> 
-    },
-  ];
+    const links = [
+      { label: t("nav.about"), href: '/about' },
+      { label: t("nav.blogs"), href: '/blogs' },
+    ];
 
-  return (
-    <footer className="w-full bg-background border-t border-border pt-[64px] pb-[32px] px-4 sm:px-6">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-[64px]">
-          {/* Brand Column */}
-          <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
-            <Link href="/" className="inline-block">
-              <span className="text-xl font-bold tracking-tight text-foreground">
-                Ziyodulla<span className="text-primary">.</span>
-              </span>
-            </Link>
+    const socialLinks = [
+      { 
+        label: 'YouTube', 
+        href: 'https://youtube.com/@ziyodulla_abdullayev', 
+        icon: <Youtube size={16} /> 
+      },
+      { 
+        label: 'Instagram', 
+        href: 'https://instagram.com/ziyodulla__abdullayev', 
+        icon: <Instagram size={16} /> 
+      },
+      { 
+        label: 'Telegram', 
+        href: 'https://t.me/abdullayevziyodulla', 
+        icon: <TelegramIcon size={16} /> 
+      },
+      { 
+        label: 'LinkedIn', 
+        href: 'https://linkedin.com/in/abdullayevziyodulla', 
+        icon: <Linkedin size={16} /> 
+      },
+      { 
+        label: 'GitHub', 
+        href: 'https://github.com/abdullayevziyodulla', 
+        icon: <Github size={16} /> 
+      },
+    ];
+
+    return (
+      <footer className="w-full bg-background border-t border-border pt-[64px] pb-[32px] px-4 sm:px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-[64px]">
+            {/* Brand Column */}
+            <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
+              <Link href="/" className="inline-block">
+                <span className="text-xl font-bold tracking-tight text-foreground">
+                  Ziyodulla
+                </span>
+              </Link>
             <p className="text-[16px] leading-[1.6] font-light text-muted-foreground max-w-[360px]">
               {t("footer.description")}
             </p>
