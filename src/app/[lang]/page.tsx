@@ -3,6 +3,7 @@ import HeroSection from "@/components/sections/hero";
 import Footer from "@/components/sections/footer";
 import LatestFeed from "@/components/sections/latest-feed";
 import AffiliatesSection from "@/components/sections/affiliates-section";
+import YouTubeFeed from "@/components/sections/youtube-feed";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -13,6 +14,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <HeroSection />
         <AffiliatesSection />
         <LatestFeed />
+        <YouTubeFeed />
       </main>
       <Footer />
     </div>
