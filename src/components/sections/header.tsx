@@ -37,7 +37,7 @@
             <div className="flex-1 flex justify-start items-center gap-3">
               <a href="/" className="flex items-center gap-2 shrink-0">
                 <span className="text-xl font-bold tracking-tight text-foreground">
-                  Ziyodulla
+                  Ziyodulla Abdullayev
                 </span>
               </a>
             </div>
