@@ -17,7 +17,7 @@ const translations = {
     "hero.greeting": "Salom, men ",
     "hero.name": "Ziyodulla Abdullayev",
     "hero.title": "Blogimda shaxsiy fikrlar va rejalarim bilan bo'lishib boraman. Sun'iy intellekt va dasturlash haqida videolarni YouTube kanalimdan topishingiz mumkin.",
-    "hero.description": "Hozirda Fullstack dasturlashni Scrimba.com platformasida o'rganyapman.",
+    "hero.description": "Hozirda Fullstack dasturlashni Scrimba.com platformasida o'rganyapman. Sun'iy intellekt va dasturlash haqida eng so'nggi foydali ma'lumotlarni blogimda yozib boraman.",
     "hero.subscribe": "Obuna bo'lish",
     "hero.email_placeholder": "email kiriting",
     "feed.title": "Oxirgi maqolalar",
@@ -59,8 +59,8 @@ export const LanguageProvider = ({ children }: {children: React.ReactNode;}) => 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
-    </LanguageContext.Provider>);
-
+    </LanguageContext.Provider>
+  );
 };
 
 export const useLanguage = () => {
