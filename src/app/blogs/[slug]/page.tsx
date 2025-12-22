@@ -46,7 +46,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   <div className="size-6 rounded-full overflow-hidden border border-border">
                     <img
                       src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
-                      alt="Ziyodulla"
+                        alt="Ziyodulla Abdullayev"
                       className="w-full h-full object-cover"
                     />
                   </div>
