@@ -51,31 +51,32 @@
                     href={aff.link_url || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-8 p-10 rounded-2xl bg-[#f9fafb] dark:bg-[#262626] border border-[#f1f1f1] dark:border-transparent hover:bg-[#f3f4f6] dark:hover:bg-[#2a2a2a] transition-all"
+                    className="group flex flex-col sm:flex-row items-center gap-6 p-8 rounded-2xl bg-[#fafafa] dark:bg-[#1a1a1a] border border-border hover:bg-muted transition-all"
                   >
-                    <div className="flex-shrink-0 w-32 h-32 flex items-center justify-center overflow-hidden">
+                    <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center overflow-hidden">
                       {aff.image_url ? (
                         <img
                           src={aff.image_url}
                           alt={aff.name}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all"
                         />
                       ) : (
-                        <div className="text-5xl font-bold opacity-20 text-black dark:text-white">
+                        <div className="text-3xl font-bold opacity-20">
                           {aff.name.substring(0, 2).toUpperCase()}
                         </div>
                       )}
                     </div>
                     
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-[22px] font-bold text-black dark:text-white mb-2 lowercase">
+                    <div className="flex-1 min-w-0 text-center sm:text-left">
+                      <h3 className="text-[20px] font-semibold text-foreground mb-1">
                         {aff.name}
                       </h3>
-                      <p className="text-[17px] text-[#737373] dark:text-gray-400 leading-relaxed lowercase">
+                      <p className="text-[15px] text-muted-foreground leading-relaxed">
                         {aff.description}
                       </p>
                     </div>
                   </a>
+
               ))}
             </div>
       </div>
