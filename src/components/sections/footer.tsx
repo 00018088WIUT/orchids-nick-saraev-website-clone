@@ -2,7 +2,7 @@
 
   import React from 'react';
   import Link from 'next/link';
-  import { Linkedin, Github, Youtube, Instagram } from 'lucide-react';
+  import { Linkedin, Github, Youtube, Instagram, Globe } from 'lucide-react';
   import { ThemeToggle } from '../theme-toggle';
   import { useLanguage } from '@/components/language-provider';
 
