@@ -111,12 +111,13 @@
                 <form 
                   className="relative w-full bg-card border border-border flex items-center rounded-2xl p-1.5 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/20 transition-all duration-200"
                 >
-                  <input 
-                    type="email"
-                    placeholder="Your email address"
-                    required
-                    className="bg-transparent text-foreground flex-[2] py-2 px-3 text-sm md:text-base border-none focus:ring-0 placeholder:text-muted-foreground/60 outline-none w-full"
-                  /> 
+                    <input 
+                      type="email"
+                      placeholder={t("hero.email_placeholder")}
+                      required
+                      className="bg-transparent text-foreground flex-[2] py-2 px-3 text-sm md:text-base border-none focus:ring-0 placeholder:text-muted-foreground/60 outline-none w-full"
+                    /> 
+
                   <button 
                     type="submit"
                     className="flex-1 px-4 py-2 bg-primary text-primary-foreground font-medium rounded-xl transition-all duration-200 hover:brightness-110 whitespace-nowrap"
