@@ -52,7 +52,8 @@ export default async function YouTubeFeed({ lang = "en" }: { lang: string }) {
 
   if (videos.length === 0) return null;
 
-  const currentTranslations = translations[lang as "uz" | "en"] || translations.en;
+  const currentLang = (lang === "uz" || lang === "en" ? lang : "en") as Language;
+  const currentTranslations = translations[currentLang];
 
   return (
     <YouTubeContent 
