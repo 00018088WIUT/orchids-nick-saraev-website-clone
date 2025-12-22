@@ -55,11 +55,11 @@
                   >
                     <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center overflow-hidden">
                       {aff.image_url ? (
-                        <img
-                          src={aff.image_url}
-                          alt={aff.name}
-                          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all"
-                        />
+                          <img
+                            src={aff.image_url}
+                            alt={aff.name}
+                            className="w-full h-full object-contain transition-all"
+                          />
                       ) : (
                         <div className="text-3xl font-bold opacity-20">
                           {aff.name.substring(0, 2).toUpperCase()}
