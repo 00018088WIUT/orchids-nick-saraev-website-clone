@@ -37,7 +37,7 @@ export default function YouTubeContent({ videos, title, moreText }: YouTubeConte
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className={videos.length === 1 ? "max-w-[800px] mx-auto" : "grid grid-cols-1 md:grid-cols-3 gap-6"}>
           {videos.map((video) => (
             <a
               key={video.id}
@@ -52,7 +52,7 @@ export default function YouTubeContent({ videos, title, moreText }: YouTubeConte
                   alt={video.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
                   <div className="w-10 h-10 bg-primary/90 text-white rounded-full flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-300">
@@ -61,10 +61,13 @@ export default function YouTubeContent({ videos, title, moreText }: YouTubeConte
                 </div>
               </div>
               <div>
-                <h3 className="text-[16px] font-medium leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                <h3 className="text-[18px] md:text-[20px] font-medium leading-snug group-hover:text-primary transition-colors line-clamp-2">
                   {video.title}
                 </h3>
-                <span className="text-[13px] text-muted-foreground mt-2 block font-light">
+                <span 
+                    className="text-[13px] text-muted-foreground mt-2 block font-light"
+                    suppressHydrationWarning
+                >
                   {new Date(video.published).toLocaleDateString()}
                 </span>
               </div>
