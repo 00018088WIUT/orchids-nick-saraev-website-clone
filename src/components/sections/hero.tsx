@@ -6,17 +6,15 @@
   import { Linkedin, Github, Youtube, Instagram } from 'lucide-react';
 
     const TelegramIcon = ({ size = 24 }: { size?: number }) => (
-      <svg 
-        width={size} 
-        height={size} 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.75a2.25 2.25 0 0 0 .125 4.148l3.75 1.125a1.125 1.125 0 0 0 1.25-.43l5.25-6.75a.375.375 0 1 1 .58.473l-4.5 5.25a1.125 1.125 0 0 0-.25.872l.75 5.25a2.25 2.25 0 0 0 4.148.125l6.75-16.5a2.242 2.242 0 0 0-2.381-2.531Z" />
+        <path d="M21.928 2.484c-.313-1.244-1.488-1.884-2.644-1.454L2.43 7.954c-1.222.487-1.235 1.188-.235 1.494l4.46 1.392L17.33 4.52c.152-.135.543-.296.636-.199.094.097.016.45-.133.61L8.23 14.67l-.382 4.213c.358.05.577-.15.773-.33l2.075-1.958 4.322 3.183c.789.435 1.483.212 1.686-.717L21.928 2.484z" />
       </svg>
     );
 
