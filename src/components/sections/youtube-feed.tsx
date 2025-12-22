@@ -55,11 +55,10 @@ export default async function YouTubeFeed({ lang = "en" }: { lang: string }) {
   const currentLang = (lang === "uz" || lang === "en" ? lang : "en") as Language;
   const currentTranslations = translations[currentLang];
 
-  return (
-    <YouTubeContent 
-        videos={videos} 
-        title={currentTranslations["youtube.title"]}
-        moreText={currentTranslations["youtube.more"]}
-    />
-  );
+    return (
+      <YouTubeContent 
+          videos={videos} 
+          title={currentTranslations["youtube.title"]}
+      />
+    );
 }
