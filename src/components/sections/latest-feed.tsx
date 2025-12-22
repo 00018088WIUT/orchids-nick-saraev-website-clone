@@ -64,10 +64,14 @@
                     </h3>
                   </div>
 
-                  <div className="flex items-center gap-6">
-                    <span className="text-[14px] text-muted-foreground font-light w-28 text-right">
-                      {new Date(post.created_at).toLocaleDateString()}
-                    </span>
+                    <div className="flex items-center gap-6">
+                      <span 
+                        className="text-[14px] text-muted-foreground font-light w-28 text-right"
+                        suppressHydrationWarning
+                      >
+                        {new Date(post.created_at).toLocaleDateString()}
+                      </span>
+
                     <div className="size-8 rounded-full overflow-hidden border border-border bg-card">
                         <img
                           src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
