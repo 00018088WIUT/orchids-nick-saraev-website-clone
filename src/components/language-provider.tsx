@@ -28,14 +28,14 @@ const translations = {
     "footer.description": "Ziyodulla Abdullayevning shaxsiy blogi.",
     "footer.rights": ""
   },
-  en: {
-    "nav.blogs": "blog",
-    "nav.about": "About",
-    "hero.greeting": "I'm ",
-    "hero.name": "Ziyodulla Abdullayev",
-    "hero.title": "I share my journey building with AI and valuable insights on my YouTube channel.",
-    "hero.description": "Learn about AI tools, development hacks, and get exclusive discounts through my affiliate links. Check out my latest videos and articles on the blog.",
-    "hero.subscribe": "Subscribe",
+    en: {
+      "nav.blogs": "blog",
+      "nav.about": "About",
+      "hero.greeting": "I'm ",
+      "hero.name": "Ziyodulla Abdullayev",
+      "hero.title": "I share my personal thoughts and plans on my blog.",
+      "hero.description": "You can find videos about AI and programming on my YouTube channel.",
+      "hero.subscribe": "Subscribe",
     "hero.email_placeholder": "Your email address",
     "feed.title": "Latest posts",
     "feed.no_posts": "No blog posts yet.",
