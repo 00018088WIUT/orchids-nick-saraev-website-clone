@@ -25,8 +25,8 @@
     const { language, t } = useLanguage();
 
     const links = [
-      { label: t("nav.about"), href: '/about' },
-      { label: t("nav.blogs"), href: '/blogs' },
+      { label: t("nav.about"), href: `/${language}/about` },
+      { label: t("nav.blogs"), href: `/${language}/blogs` },
     ];
 
     const socialLinks = [
