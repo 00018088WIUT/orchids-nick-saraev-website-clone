@@ -18,6 +18,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Ziyodulla Abdullayev",
   description: "Personal blog and portfolio of Ziyodulla Abdullayev.",
+  icons: {
+    icon: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1766425144441.png?width=32&height=32&resize=contain",
+  },
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
