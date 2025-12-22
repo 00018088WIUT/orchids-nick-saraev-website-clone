@@ -2,14 +2,6 @@
 
 import React from "react";
 import { FaYoutube } from "react-icons/fa";
-import Image from "next/image";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 interface YouTubeVideo {
   id: string;
