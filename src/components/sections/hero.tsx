@@ -3,7 +3,7 @@
   import React from 'react';
   import Image from 'next/image';
   import { useLanguage } from '@/components/language-provider';
-  import { Linkedin, Github, Youtube, Instagram, Send } from 'lucide-react';
+  import { Linkedin, Github, Youtube, Instagram } from 'lucide-react';
 
   const TelegramIcon = ({ size = 24 }: { size?: number }) => (
     <svg 
