@@ -19,6 +19,8 @@ const translations = {
     "hero.title": "Men sun'iy intellekt (AI) bilan ishlash va uni qurish haqidagi qimmatli bilimlarimni ulashadigan YouTube kanalimni boshladim.",
     "hero.description": "Kanalimda AIdan foydalanish, asbob-uskunalar va chegirmali affiliate linklar haqida ma'lumot berib boraman. Shuningdek, qiziqarli maqolalarimni blogimda o'qishingiz mumkin.",
     "hero.subscribe": "Obuna bo'lish",
+    "feed.title": "Oxirgi maqolalar",
+    "feed.no_posts": "Hozircha maqolalar yo'q.",
     "footer.quick_links": "Tezkor linklar",
     "footer.description": "Ziyodulla Abdullayevning shaxsiy blogi. Texnologiya, dasturlash va hayotdagi sayohatim haqida.",
     "footer.rights": "",
