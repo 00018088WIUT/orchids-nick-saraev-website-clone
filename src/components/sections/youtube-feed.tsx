@@ -1,7 +1,9 @@
-import React from 'react';
-import { Youtube, ExternalLink } from 'lucide-react';
+import React from "react";
+import { useLanguage } from "@/components/language-provider";
+import { FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
-interface YoutubeVideo {
+interface YouTubeVideo {
   id: string;
   title: string;
   link: string;
@@ -9,62 +11,68 @@ interface YoutubeVideo {
   published: string;
 }
 
-async function getYoutubeVideos(channelId: string) {
+async function getLatestVideos(channelId: string): Promise<YouTubeVideo[]> {
   try {
-    const response = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, {
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
-    
-    if (!response.ok) return [];
-    
-    const xml = await response.text();
-    
-    // Simple regex parsing for atom feed entries
-    const entries = xml.match(/<entry>[\s\S]*?<\/entry>/g) || [];
-    
-    return entries.slice(0, 3).map(entry => {
-      // Decode XML entities like &amp; to &
-      const decodeHtml = (html: string) => {
-        return html
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
-          .replace(/&quot;/g, '"')
-          .replace(/&#39;/g, "'");
-      };
+    const response = await fetch(
+      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
+      { next: { revalidate: 3600 } } // Revalidate every hour
+    );
+    const text = await response.text();
 
-      const title = entry.match(/<title>(.*?)<\/title>/)?.[1] || '';
-      const link = entry.match(/<link rel="alternate" href="(.*?)"\/>/)?.[1] || '';
-      const videoId = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/)?.[1] || '';
-      const published = entry.match(/<published>(.*?)<\/published>/)?.[1] || '';
-      
+    const videoEntries = text.split("<entry>").slice(1);
+    return videoEntries.slice(0, 3).map((entry) => {
+      const idMatch = entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/);
+      const titleMatch = entry.match(/<title>(.*?)<\/title>/);
+      const linkMatch = entry.match(/<link rel="alternate" href="(.*?)"/);
+      const publishedMatch = entry.match(/<published>(.*?)<\/published>/);
+
+      const videoId = idMatch ? idMatch[1] : "";
       return {
         id: videoId,
-        title: decodeHtml(title),
-        link,
+        title: titleMatch ? titleMatch[1] : "YouTube Video",
+        link: linkMatch ? linkMatch[1] : `https://www.youtube.com/watch?v=${videoId}`,
         thumbnail: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
-        published
+        published: publishedMatch ? publishedMatch[1] : new Date().toISOString(),
       };
     });
   } catch (error) {
-    console.error('Error fetching YouTube videos:', error);
+    console.error("Error fetching YouTube videos:", error);
     return [];
   }
 }
 
-export default async function YoutubeFeed({ lang, t }: { lang: string, t: (key: string) => string }) {
-  const channelId = 'UCWmZTgDJmeGwpy2X5gS24zQ';
-  const videos = await getYoutubeVideos(channelId);
+export default async function YouTubeFeed() {
+  const channelId = "UCWmZTgDJmeGwpy2X5gS24zQ";
+  const videos = await getLatestVideos(channelId);
 
   if (videos.length === 0) return null;
 
+  return <YouTubeContent videos={videos} />;
+}
+
+// Client component part for translations
+function YouTubeContent({ videos }: { videos: YouTubeVideo[] }) {
+  const { t } = useLanguage();
+
   return (
-    <section className="px-4 sm:px-6 mb-24">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="border-b border-border mb-8 flex justify-between items-end">
-          <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
-            {t("youtube.title")}
-          </h2>
+    <section className="py-20 bg-black/5 dark:bg-white/5">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight mb-2 uppercase">
+              {t("youtube.title")}
+            </h2>
+            <div className="h-1.5 w-20 bg-primary rounded-full"></div>
+          </div>
+          <a
+            href="https://www.youtube.com/@ziyodulla_abdullayev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+          >
+            <FaYoutube className="text-xl" />
+            {t("youtube.more")}
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -74,52 +82,34 @@ export default async function YoutubeFeed({ lang, t }: { lang: string, t: (key: 
               href={video.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col gap-4"
+              className="group block"
             >
-              <div className="aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted relative shadow-sm group-hover:shadow-md transition-shadow">
-                <img
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-4 ring-1 ring-white/10 group-hover:ring-primary/50 transition-all duration-300">
+                <Image
                   src={video.thumbnail}
                   alt={video.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    // Fallback to hqdefault if maxresdefault doesn't exist
-                    (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
-                  }}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg transform scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
-                    <Youtube className="w-6 h-6 text-red-600" />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+                    <FaYoutube size={24} />
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 px-1">
-                <h3 className="text-[17px] font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors">
-                  {video.title}
-                </h3>
-                <span className="text-[13px] text-muted-foreground font-medium">
-                  {new Date(video.published).toLocaleDateString(lang === 'uz' ? 'uz-UZ' : 'en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </span>
-              </div>
+              <h3 className="font-semibold line-clamp-2 group-hover:text-primary transition-colors text-lg leading-snug">
+                {video.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mt-2">
+                {new Date(video.published).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
             </a>
           ))}
-        </div>
-        
-        <div className="mt-10 flex justify-center md:justify-start">
-           <a 
-            href={`https://www.youtube.com/channel/${channelId}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[14px] font-semibold text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:bg-muted/50"
-          >
-            <Youtube size={16} className="text-red-600" />
-            {t("youtube.more")}
-            <ExternalLink size={14} className="opacity-50" />
-          </a>
         </div>
       </div>
     </section>
