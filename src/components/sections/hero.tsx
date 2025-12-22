@@ -54,11 +54,11 @@
 
       return (
         <section className="px-4 sm:px-6 mb-12 overflow-hidden w-full flex justify-center">
-          <div className="py-12 md:py-20 max-w-[1200px] w-full flex flex-col items-center gap-10">
+          <div className="py-12 md:py-20 max-w-[1200px] w-full flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
             
             {/* Profile Picture & Socials Column */}
-            <div className="flex flex-col items-center gap-6">
-              <div className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden border border-border shadow-2xl">
+            <div className="flex flex-col items-center gap-6 shrink-0">
+              <div className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden border border-border shadow-xl bg-muted">
                 <Image
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1766425144441.png?width=800&height=1000&resize=contain"
                   alt="Ziyodulla Abdullayev"
@@ -87,12 +87,12 @@
 
             {/* Text Content */}
             <div 
-              className="flex flex-col gap-6 md:gap-8 items-center text-center max-w-[800px]"
+              className="flex flex-col gap-6 md:gap-8 items-center md:items-start text-center md:text-left flex-1"
             >
               {/* Main Headline */}
               <div className="space-y-4 md:space-y-5">
                 <h1 
-                  className="font-bold tracking-tight text-[1.75rem] leading-[1.2] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] text-foreground font-display break-words"
+                  className="font-bold tracking-tight text-[1.75rem] leading-[1.2] sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem] text-foreground font-display break-words"
                 >
                   {t("hero.greeting")}<span className="text-primary">{t("hero.name")}</span>
                 </h1>
