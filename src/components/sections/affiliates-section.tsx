@@ -1,46 +1,48 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
-import { Loader2 } from "lucide-react";
+  import React, { useState, useEffect } from "react";
+  import { supabase } from "@/lib/supabase";
+  import { Loader2 } from "lucide-react";
+  import { useLanguage } from "@/components/language-provider";
 
-interface Affiliate {
-  id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  link_url: string;
-}
+  interface Affiliate {
+    id: string;
+    name: string;
+    description: string;
+    image_url: string;
+    link_url: string;
+  }
 
-const AffiliatesSection: React.FC = () => {
-  const [affiliates, setAffiliates] = useState<Affiliate[]>([]);
-  const [loading, setLoading] = useState(true);
+  const AffiliatesSection: React.FC = () => {
+    const [affiliates, setAffiliates] = useState<Affiliate[]>([]);
+    const [loading, setLoading] = useState(true);
+    const { t } = useLanguage();
 
-  useEffect(() => {
-    const fetchAffiliates = async () => {
-      const { data, error } = await supabase
-        .from('affiliates')
-        .select('*')
-        .order('display_order', { ascending: true });
-      
-      if (data) setAffiliates(data);
-      setLoading(false);
-    };
+    useEffect(() => {
+      const fetchAffiliates = async () => {
+        const { data, error } = await supabase
+          .from('affiliates')
+          .select('*')
+          .order('display_order', { ascending: true });
+        
+        if (data) setAffiliates(data);
+        setLoading(false);
+      };
 
-    fetchAffiliates();
-  }, []);
+      fetchAffiliates();
+    }, []);
 
-  if (loading) return null;
-  if (affiliates.length === 0) return null;
+    if (loading) return null;
+    if (affiliates.length === 0) return null;
 
-  return (
-    <section className="px-4 sm:px-6 mb-16">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="mb-6">
-          <h2 className="text-[14px] font-medium text-muted-foreground lowercase">
-            affiliates
-          </h2>
-        </div>
+    return (
+      <section className="px-4 sm:px-6 mb-16">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="mb-8 border-b border-border">
+            <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
+              {t("affiliates.title")}
+            </h2>
+          </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {affiliates.map((aff) => (
