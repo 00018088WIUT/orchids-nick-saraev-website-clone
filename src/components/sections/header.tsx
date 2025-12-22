@@ -19,8 +19,8 @@
     }, []);
 
     const navItems = [
-      { label: t("nav.about"), href: "/about" },
-      { label: t("nav.blogs"), href: "/blogs" },
+      { label: t("nav.about"), href: `/${language}/about` },
+      { label: t("nav.blogs"), href: `/${language}/blogs` },
     ];
 
     const toggleLanguage = () => {
@@ -35,7 +35,7 @@
           
             {/* Logo Section */}
             <div className="flex-1 flex justify-start items-center gap-3">
-              <a href="/" className="flex items-center gap-2 shrink-0">
+              <a href={`/${language}`} className="flex items-center gap-2 shrink-0">
                 <span className="text-xl font-bold tracking-tight text-foreground">
                   Ziyodulla Abdullayev
                 </span>
