@@ -51,14 +51,14 @@
                     href={aff.link_url || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col sm:flex-row items-center gap-6 p-8 rounded-2xl bg-[#fafafa] dark:bg-[#1a1a1a] border border-border hover:bg-muted transition-all"
+                    className="group flex flex-col sm:flex-row items-center gap-6 p-8 rounded-2xl bg-[#fafafa] dark:bg-[#1a1a1a] border border-border hover:border-black/10 dark:hover:border-white/10 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300"
                   >
                     <div className="flex-shrink-0 w-24 h-24 flex items-center justify-center overflow-hidden">
                       {aff.image_url ? (
                           <img
                             src={aff.image_url}
                             alt={aff.name}
-                            className="w-full h-full object-contain transition-all"
+                            className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
                           />
                       ) : (
                         <div className="text-3xl font-bold opacity-20">
