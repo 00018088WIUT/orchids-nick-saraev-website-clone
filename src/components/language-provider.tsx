@@ -42,8 +42,10 @@ const translations = {
       "hero.email_placeholder": "Your email address",
       "feed.title": "Latest posts",
       "feed.no_posts": "No blog posts yet.",
-      "feed.all_blogs": "All Blogs",
-      "affiliates.title": "Affiliates & Useful Tools",
+        "feed.all_blogs": "All Blogs",
+        "youtube.title": "Latest YouTube Videos",
+        "youtube.more": "Watch on YouTube",
+        "affiliates.title": "Affiliates & Useful Tools",
       "footer.quick_links": "Quick Links",
       "footer.description": "Personal blog of Ziyodulla Abdullayev.",
       "footer.rights": ""
