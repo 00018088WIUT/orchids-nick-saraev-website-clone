@@ -36,6 +36,7 @@ const translations = {
     "hero.subscribe": "Subscribe",
     "feed.title": "Latest posts",
     "feed.no_posts": "No blog posts yet.",
+    "affiliates.title": "Affiliates & Useful Tools",
     "footer.quick_links": "Quick Links",
     "footer.description": "Personal blog of Ziyodulla Abdullayev. Sharing my journey through technology, development, and life.",
     "footer.rights": "",
