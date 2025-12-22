@@ -13,50 +13,51 @@
     created_at: string;
   }
 
-  const LatestFeed: React.FC = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [loading, setLoading] = useState(true);
-    const { t } = useLanguage();
+    const LatestFeed: React.FC = () => {
+      const [posts, setPosts] = useState<Post[]>([]);
+      const [loading, setLoading] = useState(true);
+      const { t, language } = useLanguage();
 
-    useEffect(() => {
-      const fetchPosts = async () => {
-        const { data, error } = await supabase
-          .from('blogs')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (data) setPosts(data);
-        setLoading(false);
-      };
+      useEffect(() => {
+        const fetchPosts = async () => {
+          const { data, error } = await supabase
+            .from('blogs')
+            .select('*')
+            .eq('language', language)
+            .order('created_at', { ascending: false });
+          
+          if (data) setPosts(data);
+          setLoading(false);
+        };
 
-      fetchPosts();
-    }, []);
+        fetchPosts();
+      }, [language]);
 
-    if (loading) {
-      return (
-        <div className="flex justify-center items-center py-20">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        </div>
-      );
-    }
-
-    return (
-      <section className="px-4 sm:px-6 mb-24">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="border-b border-border mb-8">
-            <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
-              {t("feed.title")}
-            </h2>
+      if (loading) {
+        return (
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
+        );
+      }
 
-          <div className="flex flex-col">
-            {posts.length > 0 ? (
-              posts.map((post) => (
-                <a
-                  key={post.id}
-                  href={`/blogs/${post.slug}`}
-                  className="group flex items-center justify-between py-5 border-b border-border hover:bg-card/30 transition-all px-1"
-                >
+      return (
+        <section className="px-4 sm:px-6 mb-24">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="border-b border-border mb-8">
+              <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
+                {t("feed.title")}
+              </h2>
+            </div>
+
+            <div className="flex flex-col">
+              {posts.length > 0 ? (
+                posts.map((post) => (
+                  <a
+                    key={post.id}
+                    href={`/${language}/blogs/${post.slug}`}
+                    className="group flex items-center justify-between py-5 border-b border-border hover:bg-card/30 transition-all px-1"
+                  >
                   <div className="flex-1 flex items-center gap-2">
                     <h3 className="text-[18px] font-medium leading-[1.4] text-foreground group-hover:text-primary transition-colors">
                       {post.title}
