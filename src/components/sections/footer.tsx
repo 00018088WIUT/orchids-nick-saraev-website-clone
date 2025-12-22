@@ -6,21 +6,22 @@
   import { ThemeToggle } from '../theme-toggle';
   import { useLanguage } from '@/components/language-provider';
 
-  const TelegramIcon = ({ size = 24 }: { size?: number }) => (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-    >
-      <path d="M22 2L11 13" />
-      <path d="M22 2L15 22L11 13L2 9L22 2z" />
-    </svg>
-  );
+    const TelegramIcon = ({ size = 24 }: { size?: number }) => (
+      <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+      >
+        <path d="m22 2-7 20-4-9-9-4Z" />
+        <path d="M22 2 11 13" />
+      </svg>
+    );
+
 
   const Footer = () => {
     const currentYear = new Date().getFullYear();
