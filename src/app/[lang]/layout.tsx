@@ -26,13 +26,16 @@ export const metadata: Metadata = {
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
   return (
-      <html lang="en" suppressHydrationWarning>
+        <html lang={lang} suppressHydrationWarning>
         <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
 
         <ThemeProvider
