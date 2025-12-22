@@ -59,8 +59,8 @@
   --color-bgr-tone: var(--secondary);
   --color-success: #10b981;
 
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Poppins", sans-serif;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-sans);
 
   @keyframes accordion-down {
     from {
