@@ -32,7 +32,6 @@ export const translations = {
     "feed.no_posts": "No blog posts yet.",
     "feed.all_blogs": "All Blogs",
     "youtube.title": "Latest YouTube Videos",
-    "youtube.more": "Watch on YouTube",
     "affiliates.title": "Affiliates & Useful Tools",
     "footer.quick_links": "Quick Links",
     "footer.description": "Personal blog of Ziyodulla Abdullayev.",
