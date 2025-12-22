@@ -11,7 +11,7 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const translations = {
+export const translations = {
     uz: {
       "nav.blogs": "Blog",
       "nav.about": "Men Haqimda",
