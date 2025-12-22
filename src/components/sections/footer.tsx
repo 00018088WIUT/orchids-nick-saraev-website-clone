@@ -65,12 +65,7 @@
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-[64px]">
             {/* Brand Column */}
             <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
-              <Link href="/" className="inline-block">
-                <span className="text-xl font-bold tracking-tight text-foreground">
-                  Ziyodulla
-                </span>
-              </Link>
-            <p className="text-[16px] leading-[1.6] font-light text-muted-foreground max-w-[360px]">
+              <p className="text-[16px] leading-[1.6] font-light text-muted-foreground max-w-[360px]">
               {t("footer.description")}
             </p>
             <div className="flex gap-2">
