@@ -14,7 +14,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <HeroSection />
         <AffiliatesSection />
         <LatestFeed />
-        <YouTubeFeed />
+        <YouTubeFeed lang={lang} />
       </main>
       <Footer />
     </div>

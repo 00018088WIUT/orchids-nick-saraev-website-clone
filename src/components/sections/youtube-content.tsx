@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useLanguage } from "@/components/language-provider";
 import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 
@@ -13,15 +12,19 @@ interface YouTubeVideo {
   published: string;
 }
 
-export default function YouTubeContent({ videos }: { videos: YouTubeVideo[] }) {
-  const { t } = useLanguage();
+interface YouTubeContentProps {
+  videos: YouTubeVideo[];
+  title: string;
+  moreText: string;
+}
 
+export default function YouTubeContent({ videos, title, moreText }: YouTubeContentProps) {
   return (
     <section className="px-4 sm:px-6 mb-24">
       <div className="max-w-[1200px] mx-auto">
         <div className="border-b border-border mb-8 flex justify-between items-center pb-2.5">
           <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground">
-            {t("youtube.title")}
+            {title}
           </h2>
           <a
             href="https://www.youtube.com/@ziyodulla_abdullayev"
@@ -30,7 +33,7 @@ export default function YouTubeContent({ videos }: { videos: YouTubeVideo[] }) {
             className="text-[12px] font-medium text-primary hover:underline flex items-center gap-1.5"
           >
             <FaYoutube className="text-sm" />
-            {t("youtube.more")}
+            {moreText}
           </a>
         </div>
 
