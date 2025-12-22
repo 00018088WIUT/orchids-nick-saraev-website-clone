@@ -40,7 +40,7 @@
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-8 border-b border-border">
             <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
-              {t("affiliates.title")}
+              LINKLAR
             </h2>
           </div>
 
