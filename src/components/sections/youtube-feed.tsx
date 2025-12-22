@@ -36,7 +36,7 @@ async function getLatestVideos(channelId: string): Promise<YouTubeVideo[]> {
         id: videoId,
         title: titleMatch ? titleMatch[1] : "YouTube Video",
         link: linkMatch ? linkMatch[1] : `https://www.youtube.com/watch?v=${videoId}`,
-        thumbnail: `https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+        thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
         published: publishedMatch ? publishedMatch[1] : new Date().toISOString(),
       };
     });
