@@ -21,11 +21,11 @@ export default function AboutPage() {
             Salom, men Ziyodulla Abdullayev.
           </p>
 
-          <div className="space-y-6 text-[16px] font-normal text-muted-foreground leading-[1.8]">
-            <p>
-              Sun&apos;iy intellekt va darturlash haqida eng so&apos;nggi foydali ma&apos;lumotlarni blogimda yozib boraman. 
-              Hozirda Fullstack dasturlashni Scrimba.com da o&apos;rganyapman.
-            </p>
+            <div className="space-y-6 text-[16px] font-normal text-muted-foreground leading-[1.8]">
+              <p>
+                Sun&apos;iy intellekt va dasturlash haqida eng so&apos;nggi foydali ma&apos;lumotlarni blogimda yozib boraman. 
+                Hozirda Fullstack dasturlashni Scrimba.com da o&apos;rganyapman.
+              </p>
             
             <p>
               I started YouTube where i share valuable information about ai and how to build with it. 
