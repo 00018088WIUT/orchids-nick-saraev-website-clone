@@ -11,14 +11,14 @@ interface LanguageContextType {
 }
 
 const translations = {
-  uz: {
-    "nav.blogs": "Blog",
-    "nav.about": "Men Haqimda",
-    "hero.greeting": "Salom, men ",
-    "hero.name": "Ziyodulla Abdullayev",
-    "hero.title": "Sun'iy intellekt va darturlash haqida eng so'nggi foydali ma'lumotlarni blogimda yozib boraman.",
-    "hero.description": "Hozirda Fullstack dasturlashni Scrimba.com da o'rganyapman. Scrimba uchun 20 % chegirmani va sun'iy intellekt websitelar uchun chegirmalarni pastdagi linklardan olishingiz mumkin.",
-    "hero.subscribe": "Obuna bo'lish",
+    uz: {
+      "nav.blogs": "Blog",
+      "nav.about": "Men Haqimda",
+      "hero.greeting": "Salom, men ",
+      "hero.name": "Ziyodulla Abdullayev",
+      "hero.title": "Blogimda shaxsiy fikrlar va rejalarim bilan bo'lishib boraman.",
+      "hero.description": "Sun'iy intellekt va dasturlash haqida videolarni YouTube kanalimdan topishingiz mumkin.",
+      "hero.subscribe": "Obuna bo'lish",
     "hero.email_placeholder": "email kiriting",
     "feed.title": "Oxirgi maqolalar",
     "feed.no_posts": "Hozircha maqolalar yo'q.",
