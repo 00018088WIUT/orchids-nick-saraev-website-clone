@@ -36,51 +36,41 @@ export default function BlogsPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Header />
-      <main className="flex-1 max-w-[1200px] mx-auto w-full py-16 px-4 sm:px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 font-display">{t("feed.all_blogs")}</h1>
+      <main className="flex-1 max-w-[900px] mx-auto w-full py-16 px-6">
+        <h1 className="text-[30px] font-semibold tracking-tight mb-12 text-foreground">
+          {t("nav.blogs")}
+        </h1>
 
         {loading ? (
           <div className="flex justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-12">
             {posts && posts.length > 0 ? (
               posts.map((post) => (
                 <Link
                   key={post.id}
                   href={`/blogs/${post.slug}`}
-                  className="group flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-primary transition-all duration-300"
+                  className="group block"
                 >
-                  <div className="p-6 flex flex-col h-full">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                        {new Date(post.created_at).toLocaleDateString()}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                  <div className="flex flex-col gap-3">
+                    <span className="text-[14px] text-muted-foreground font-normal">
+                      {new Date(post.created_at).toLocaleDateString()}
+                    </span>
+                    <h3 className="text-[24px] font-semibold text-foreground group-hover:text-primary transition-colors leading-[1.3]">
                       {post.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3 mb-6 flex-1">
+                    <p className="text-[16px] text-muted-foreground font-normal leading-[1.6] line-clamp-2">
                       {post.excerpt || "Read more about this post..."}
                     </p>
-                    <div className="flex items-center gap-2 mt-auto">
-                      <div className="size-6 rounded-full overflow-hidden border border-border">
-                          <img
-                            src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
-                            alt="Ziyodulla"
-                            className="w-full h-full object-cover"
-                          />
-                      </div>
-                      <span className="text-xs font-medium text-foreground">Ziyodulla Abdullayev</span>
-                    </div>
                   </div>
                 </Link>
               ))
             ) : (
-              <div className="col-span-full py-20 text-center text-muted-foreground">
+              <div className="py-20 text-center text-muted-foreground font-normal">
                 {t("feed.no_posts")}
               </div>
             )}
