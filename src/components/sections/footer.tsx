@@ -20,9 +20,13 @@
     );
 
 
-  const Footer = () => {
-    const currentYear = new Date().getFullYear();
-    const { language, t } = useLanguage();
+    const Footer = () => {
+      const currentYear = new Date().getFullYear();
+      const { language, setLanguage, t } = useLanguage();
+
+      const toggleLanguage = () => {
+        setLanguage(language === "uz" ? "en" : "uz");
+      };
 
     const links = [
       { label: t("nav.about"), href: `/${language}/about` },
