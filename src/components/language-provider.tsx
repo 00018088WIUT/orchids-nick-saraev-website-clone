@@ -24,6 +24,7 @@ const translations = {
       "feed.all_blogs": "Barcha maqolalar",
       "affiliates.title": "Hamkorlik va foydali uskunalar",
         "footer.quick_links": "Havolalar",
+        "footer.description": "Ziyodulla Abdullayevning shaxsiy blogi.",
         "footer.rights": "",
       },
       en: {
@@ -39,6 +40,7 @@ const translations = {
         "feed.all_blogs": "All Blogs",
         "affiliates.title": "Affiliates & Useful Tools",
         "footer.quick_links": "Quick Links",
+        "footer.description": "Personal blog of Ziyodulla Abdullayev.",
         "footer.rights": "",
       },
 
