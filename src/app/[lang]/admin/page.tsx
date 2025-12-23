@@ -30,6 +30,7 @@ const AdminPanel = () => {
   const [affImage, setAffImage] = useState<File | null>(null);
   const [affLoading, setAffLoading] = useState(false);
   const [affiliates, setAffiliates] = useState<any[]>([]);
+  const [editingAffiliate, setEditingAffiliate] = useState<any>(null);
 
   const router = useRouter();
 
