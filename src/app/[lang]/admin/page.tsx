@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { Loader2, ArrowLeft, LogOut, Plus, Trash2, Image as ImageIcon } from "lucide-react";
+import { Loader2, ArrowLeft, LogOut, Plus, Trash2, Image as ImageIcon, Pencil, X } from "lucide-react";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 
