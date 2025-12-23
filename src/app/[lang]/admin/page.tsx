@@ -408,7 +408,7 @@ const AdminPanel = () => {
                 disabled={affLoading}
                 className="bg-primary text-primary-foreground font-medium py-3 rounded-lg hover:brightness-110 transition-all flex justify-center items-center disabled:opacity-50 font-sans"
               >
-                {affLoading ? <Loader2 className="animate-spin" /> : "Add Affiliate"}
+                {affLoading ? <Loader2 className="animate-spin" /> : (editingAffiliate ? "Update Affiliate" : "Add Affiliate")}
               </button>
             </form>
 
