@@ -140,21 +140,38 @@ const AdminPanel = () => {
       
       const { data: { publicUrl } } = supabase.storage.from("affiliates").getPublicUrl(fileName);
       image_url = publicUrl;
+    } else if (editingAffiliate) {
+      image_url = editingAffiliate.image_url;
     }
 
-    const { error } = await supabase.from("affiliates").insert([
-      { name: affName, description: affDescription, image_url, link_url: affLink, display_order: affiliates.length },
-    ]);
+    if (editingAffiliate) {
+      const { error } = await supabase
+        .from("affiliates")
+        .update({ name: affName, description: affDescription, image_url, link_url: affLink })
+        .eq("id", editingAffiliate.id);
 
-    if (error) {
-      alert("Error creating affiliate: " + error.message);
+      if (error) {
+        alert("Error updating affiliate: " + error.message);
+      } else {
+        alert("Affiliate updated successfully!");
+        cancelEdit();
+        fetchAffiliates();
+      }
     } else {
-      alert("Affiliate added successfully!");
-      setAffName("");
-      setAffDescription("");
-      setAffLink("");
-      setAffImage(null);
-      fetchAffiliates();
+      const { error } = await supabase.from("affiliates").insert([
+        { name: affName, description: affDescription, image_url, link_url: affLink, display_order: affiliates.length },
+      ]);
+
+      if (error) {
+        alert("Error creating affiliate: " + error.message);
+      } else {
+        alert("Affiliate added successfully!");
+        setAffName("");
+        setAffDescription("");
+        setAffLink("");
+        setAffImage(null);
+        fetchAffiliates();
+      }
     }
     setAffLoading(false);
   };
@@ -323,7 +340,19 @@ const AdminPanel = () => {
             <h1 className="text-3xl font-medium mb-8 font-display">Manage Affiliates</h1>
             
             <form onSubmit={handleAffiliateSubmit} className="flex flex-col gap-6 mb-12 bg-card border border-border p-6 rounded-xl">
-              <h2 className="text-xl font-medium mb-2 font-display">Add New Affiliate</h2>
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="text-xl font-medium font-display">{editingAffiliate ? "Edit Affiliate" : "Add New Affiliate"}</h2>
+                {editingAffiliate && (
+                  <button 
+                    type="button" 
+                    onClick={cancelEdit}
+                    className="text-sm flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <X size={14} />
+                    Cancel Edit
+                  </button>
+                )}
+              </div>
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium font-sans">Name</label>
                 <input
