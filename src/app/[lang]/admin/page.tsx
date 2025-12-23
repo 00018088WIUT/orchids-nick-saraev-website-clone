@@ -104,6 +104,23 @@ const AdminPanel = () => {
     setBlogLoading(false);
   };
 
+  const startEdit = (aff: any) => {
+    setEditingAffiliate(aff);
+    setAffName(aff.name);
+    setAffDescription(aff.description || "");
+    setAffLink(aff.link_url || "");
+    setAffImage(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const cancelEdit = () => {
+    setEditingAffiliate(null);
+    setAffName("");
+    setAffDescription("");
+    setAffLink("");
+    setAffImage(null);
+  };
+
   const handleAffiliateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAffLoading(true);
