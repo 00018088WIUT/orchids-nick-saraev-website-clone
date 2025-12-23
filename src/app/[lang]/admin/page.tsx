@@ -430,12 +430,22 @@ const AdminPanel = () => {
                         <p className="text-sm text-muted-foreground line-clamp-1 max-w-[400px]">{aff.description}</p>
                       </div>
                     </div>
-                    <button 
-                      onClick={() => deleteAffiliate(aff.id)}
-                      className="p-2 text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
-                    >
-                      <Trash2 size={18} />
-                    </button>
+                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button 
+                        onClick={() => startEdit(aff)}
+                        className="p-2 text-muted-foreground hover:text-primary transition-colors"
+                        title="Edit"
+                      >
+                        <Pencil size={18} />
+                      </button>
+                      <button 
+                        onClick={() => deleteAffiliate(aff.id)}
+                        className="p-2 text-muted-foreground hover:text-red-500 transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
                   </div>
                 ))
               )}
