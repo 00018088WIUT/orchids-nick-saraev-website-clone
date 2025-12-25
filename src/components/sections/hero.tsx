@@ -4,6 +4,7 @@
   import Image from 'next/image';
   import { useLanguage } from '@/components/language-provider';
   import { Linkedin, Github, Youtube, Instagram } from 'lucide-react';
+  import { FaXTwitter, FaTiktok } from 'react-icons/fa6';
 
     const TelegramIcon = ({ size = 24 }: { size?: number }) => (
       <svg
@@ -20,35 +21,25 @@
 
 
   const HeroSection: React.FC = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
-    const socialLinks = [
-      { 
-        label: 'YouTube', 
-        href: 'https://youtube.com/@ziyodulla_abdullayev', 
-        icon: <Youtube size={20} /> 
-      },
-      { 
-        label: 'Instagram', 
-        href: 'https://instagram.com/ziyodulla__abdullayev', 
-        icon: <Instagram size={20} /> 
-      },
-      { 
-        label: 'Telegram', 
-        href: 'https://t.me/abdullayevziyodulla', 
-        icon: <TelegramIcon size={20} /> 
-      },
-      { 
-        label: 'LinkedIn', 
-        href: 'https://linkedin.com/in/abdullayevziyodulla', 
-        icon: <Linkedin size={20} /> 
-      },
-      { 
-        label: 'GitHub', 
-        href: 'https://github.com/abdullayevziyodulla', 
-        icon: <Github size={20} /> 
-      },
-    ];
+    const socialLinks = language === "en"
+      ? [
+          { label: 'YouTube', href: 'https://youtube.com/@ziyodulla_ai', icon: <Youtube size={20} /> },
+          { label: 'Instagram', href: 'https://instagram.com/ziyodulla_ai', icon: <Instagram size={20} /> },
+          { label: 'TikTok', href: 'https://tiktok.com/@ziyodulla_ai', icon: <FaTiktok size={20} /> },
+          { label: 'X', href: 'https://x.com/ziyodulla_ai', icon: <FaXTwitter size={20} /> },
+          { label: 'LinkedIn', href: 'https://linkedin.com/in/abdullayevziyodulla', icon: <Linkedin size={20} /> },
+          { label: 'GitHub', href: 'https://github.com/abdullayevziyodulla', icon: <Github size={20} /> },
+        ]
+      : [
+          { label: 'YouTube', href: 'https://youtube.com/@ziyodulla_abdullayev', icon: <Youtube size={20} /> },
+          { label: 'Instagram', href: 'https://instagram.com/ziyodulla__abdullayev', icon: <Instagram size={20} /> },
+          { label: 'Telegram', href: 'https://t.me/abdullayevziyodulla', icon: <TelegramIcon size={20} /> },
+          { label: 'TikTok', href: 'https://tiktok.com/@ziyodulla_abdullayev', icon: <FaTiktok size={20} /> },
+          { label: 'LinkedIn', href: 'https://linkedin.com/in/abdullayevziyodulla', icon: <Linkedin size={20} /> },
+          { label: 'GitHub', href: 'https://github.com/abdullayevziyodulla', icon: <Github size={20} /> },
+        ];
 
       return (
         <section className="px-4 sm:px-6 mb-12 overflow-hidden w-full flex justify-center">
@@ -120,26 +111,7 @@
                 </p>
               </div>
 
-              {/* Subscription Form */}
-              <div className="w-full max-w-md">
-                <form 
-                  className="relative w-full bg-card border border-border flex items-center rounded-2xl p-1.5 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/20 transition-all duration-200"
-                >
-                    <input 
-                      type="email"
-                      placeholder={t("hero.email_placeholder")}
-                      required
-                      className="bg-transparent text-foreground flex-[2] py-2 px-3 text-sm md:text-base border-none focus:ring-0 placeholder:text-muted-foreground/60 outline-none w-full"
-                    /> 
-
-                  <button 
-                    type="submit"
-                    className="flex-1 px-4 py-2 bg-primary text-primary-foreground font-medium rounded-xl transition-all duration-200 hover:brightness-110 whitespace-nowrap"
-                  >
-                    <span>{t("hero.subscribe")}</span>
-                  </button>
-                </form>
-              </div>
+              {/* Subscription Form removed as requested */}
             </div>
           </div>
         </section>

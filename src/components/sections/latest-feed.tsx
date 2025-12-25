@@ -74,8 +74,8 @@
 
                     <div className="size-8 rounded-full overflow-hidden border border-border bg-card">
                         <img
-                          src={`https://api.dicebear.com/7.x/initials/svg?seed=ZA&backgroundColor=60a5fa`}
-                          alt="Author"
+                          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1766425144441.png"
+                          alt="Ziyodulla Abdullayev"
                           className="w-full h-full object-cover"
                         />
                     </div>

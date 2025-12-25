@@ -11,12 +11,13 @@
     description: string;
     image_url: string;
     link_url: string;
+    language: string;
   }
 
   const AffiliatesSection: React.FC = () => {
     const [affiliates, setAffiliates] = useState<Affiliate[]>([]);
     const [loading, setLoading] = useState(true);
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     useEffect(() => {
       const fetchAffiliates = async () => {
@@ -35,17 +36,19 @@
     if (loading) return null;
     if (affiliates.length === 0) return null;
 
+    const filteredAffiliates = affiliates.filter((aff) => aff.language === language);
+
     return (
       <section className="px-4 sm:px-6 mb-16">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-8 border-b border-border">
             <h2 className="text-[14px] font-semibold uppercase tracking-[0.05em] text-muted-foreground pb-2.5">
-              LINKLAR
+              {t("affiliates.links")}
             </h2>
           </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {affiliates.map((aff) => (
+              {filteredAffiliates.map((aff) => (
                   <a
                     key={aff.id}
                     href={aff.link_url || "#"}

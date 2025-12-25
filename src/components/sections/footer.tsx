@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Linkedin, Github, Youtube, Instagram, Globe } from 'lucide-react';
+import { FaXTwitter, FaTiktok } from 'react-icons/fa6';
 import { ThemeToggle } from '../theme-toggle';
 import { useLanguage } from '@/components/language-provider';
 
@@ -32,33 +33,23 @@ const Footer = () => {
     { label: t("nav.blogs"), href: `/${language}/blogs` },
   ];
 
-  const socialLinks = [
-    { 
-      label: 'YouTube', 
-      href: 'https://youtube.com/@ziyodulla_abdullayev', 
-      icon: <Youtube size={16} /> 
-    },
-    { 
-      label: 'Instagram', 
-      href: 'https://instagram.com/ziyodulla__abdullayev', 
-      icon: <Instagram size={16} /> 
-    },
-    { 
-      label: 'Telegram', 
-      href: 'https://t.me/abdullayevziyodulla', 
-      icon: <TelegramIcon size={16} /> 
-    },
-    { 
-      label: 'LinkedIn', 
-      href: 'https://linkedin.com/in/abdullayevziyodulla', 
-      icon: <Linkedin size={16} /> 
-    },
-    { 
-      label: 'GitHub', 
-      href: 'https://github.com/abdullayevziyodulla', 
-      icon: <Github size={16} /> 
-    },
-  ];
+  const socialLinks = language === "en"
+    ? [
+        { label: 'YouTube', href: 'https://youtube.com/@ziyodulla_ai', icon: <Youtube size={16} /> },
+        { label: 'Instagram', href: 'https://instagram.com/ziyodulla_ai', icon: <Instagram size={16} /> },
+        { label: 'TikTok', href: 'https://tiktok.com/@ziyodulla_ai', icon: <FaTiktok size={16} /> },
+        { label: 'X', href: 'https://x.com/ziyodulla_ai', icon: <FaXTwitter size={16} /> },
+        { label: 'LinkedIn', href: 'https://linkedin.com/in/abdullayevziyodulla', icon: <Linkedin size={16} /> },
+        { label: 'GitHub', href: 'https://github.com/abdullayevziyodulla', icon: <Github size={16} /> },
+      ]
+    : [
+        { label: 'YouTube', href: 'https://youtube.com/@ziyodulla_abdullayev', icon: <Youtube size={16} /> },
+        { label: 'Instagram', href: 'https://instagram.com/ziyodulla__abdullayev', icon: <Instagram size={16} /> },
+        { label: 'Telegram', href: 'https://t.me/abdullayevziyodulla', icon: <TelegramIcon size={16} /> },
+        { label: 'TikTok', href: 'https://tiktok.com/@ziyodulla_abdullayev', icon: <FaTiktok size={16} /> },
+        { label: 'LinkedIn', href: 'https://linkedin.com/in/abdullayevziyodulla', icon: <Linkedin size={16} /> },
+        { label: 'GitHub', href: 'https://github.com/abdullayevziyodulla', icon: <Github size={16} /> },
+      ];
 
   return (
     <footer className="w-full bg-background border-t border-border pt-[64px] pb-[32px] px-4 sm:px-6">
@@ -111,14 +102,6 @@ const Footer = () => {
                 © {currentYear} Ziyodulla Abdullayev
               </span>
               <ThemeToggle />
-                <button 
-                  onClick={toggleLanguage}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted cursor-pointer transition-colors text-xs font-medium text-foreground ml-2"
-                  aria-label="Toggle language"
-                >
-                <Globe className="w-3.5 h-3.5" />
-                <span>{language.toUpperCase()}</span>
-              </button>
             </div>
           </div>
         </div>

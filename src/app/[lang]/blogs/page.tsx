@@ -57,16 +57,13 @@ export default function BlogsPage() {
                   href={`/${language}/blogs/${post.slug}`}
                   className="group block"
                 >
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-2">
                     <span className="text-[14px] text-muted-foreground font-normal">
                       {new Date(post.created_at).toLocaleDateString()}
                     </span>
                     <h3 className="text-[24px] font-semibold text-foreground group-hover:text-primary transition-colors leading-[1.3]">
                       {post.title}
                     </h3>
-                    <p className="text-[16px] text-muted-foreground font-normal leading-[1.6] line-clamp-2">
-                      {post.excerpt || "Read more about this post..."}
-                    </p>
                   </div>
                 </Link>
               ))

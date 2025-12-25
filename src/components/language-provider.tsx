@@ -26,14 +26,14 @@ export const LanguageProvider = ({ children }: {children: React.ReactNode;}) => 
       localStorage.setItem("language", lang);
       document.cookie = `language=${lang}; path=/; max-age=31536000`;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.lang]);
 
   const setLanguage = (lang: Language) => {
     const segments = pathname.split("/");
-    // pathname starts with /, so segments[0] is "", segments[1] is the locale
     segments[1] = lang;
     const newPath = segments.join("/");
-    router.push(newPath);
+    window.location.href = newPath;
   };
 
   const t = (key: string) => {

@@ -47,7 +47,8 @@ async function getLatestVideos(channelId: string): Promise<YouTubeVideo[]> {
 }
 
 export default async function YouTubeFeed({ lang = "en" }: { lang: string }) {
-  const channelId = "UCWmZTgDJmeGwpy2X5gS24zQ";
+  // Uzbek: UCWmZTgDJmeGwpy2X5gS24zQ, English: UC_X2qWz9eWRmTZOjUoBFZ5w
+  const channelId = lang === "en" ? "UC_X2qWz9eWRmTZOjUoBFZ5w" : "UCWmZTgDJmeGwpy2X5gS24zQ";
   const videos = await getLatestVideos(channelId);
 
   if (videos.length === 0) return null;
