@@ -1,13 +1,12 @@
 "use client";
 
-
 import React, { useEffect, useState } from "react";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { useLanguage } from "@/components/language-provider";
 import { supabase } from "@/lib/supabase";
 
-export default function AboutPage({ params }: { params: { lang: string } }) {
+export default function AboutPage() {
   const { t, language } = useLanguage();
   const [aboutContent, setAboutContent] = useState<string>("");
   const [loading, setLoading] = useState(true);

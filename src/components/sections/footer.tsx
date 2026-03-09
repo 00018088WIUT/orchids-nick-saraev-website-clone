@@ -22,15 +22,11 @@ const TelegramIcon = ({ size = 24 }: { size?: number }) => (
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { language, setLanguage, t } = useLanguage();
-
-  const toggleLanguage = () => {
-    setLanguage(language === "uz" ? "en" : "uz");
-  };
+  const { language, t } = useLanguage();
 
   const links = [
-    { label: t("nav.about"), href: `/${language}/about` },
-    { label: t("nav.blogs"), href: `/${language}/blogs` },
+    { label: t("nav.about"), href: `/about` },
+    { label: t("nav.blogs"), href: `/blogs` },
   ];
 
   const socialLinks = language === "en"

@@ -1,8 +1,8 @@
 import LanguageSwitchSpinner from "@/components/ui/language-switch-spinner";
 import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
-import "./../globals.css";
-import VisualEditsMessenger from "../../visual-edits/VisualEditsMessenger";
+import "./globals.css";
+import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 
@@ -28,16 +28,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import { LanguageSwitchLoadingProvider } from "@/components/language-switch-loading-provider";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
 }>) {
-  const { lang } = await params;
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
         <ThemeProvider
           attribute="class"

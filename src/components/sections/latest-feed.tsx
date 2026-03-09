@@ -55,7 +55,7 @@
                 posts.map((post) => (
                   <a
                     key={post.id}
-                    href={`/${language}/blogs/${post.slug}`}
+                    href={`/blogs/${post.slug}`}
                     className="group flex items-center justify-between py-5 border-b border-border hover:bg-card/30 transition-all px-1"
                   >
                   <div className="flex-1 flex items-center gap-2">

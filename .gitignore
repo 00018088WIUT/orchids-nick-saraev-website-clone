@@ -33,6 +33,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local env files
+.env*.local
+.env
+
+# Admin security documentation (contains sensitive paths)
+ADMIN_SECURITY.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

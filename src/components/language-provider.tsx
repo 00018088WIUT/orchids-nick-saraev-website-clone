@@ -17,23 +17,19 @@ export const LanguageProvider = ({ children }: {children: React.ReactNode;}) => 
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [language, setLanguageState] = useState<Language>((params?.lang as Language) || "en");
+  // Always default to English
+  const [language, setLanguageState] = useState<Language>("en");
 
   useEffect(() => {
-    if (params?.lang && (params.lang === "uz" || params.lang === "en")) {
-      const lang = params.lang as Language;
-      setLanguageState(lang);
-      localStorage.setItem("language", lang);
-      document.cookie = `language=${lang}; path=/; max-age=31536000`;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.lang]);
+    // Set language to English and persist it
+    setLanguageState("en");
+    localStorage.setItem("language", "en");
+    document.cookie = `language=en; path=/; max-age=31536000`;
+  }, []);
 
   const setLanguage = (lang: Language) => {
-    const segments = pathname.split("/");
-    segments[1] = lang;
-    const newPath = segments.join("/");
-    window.location.href = newPath;
+    // Language switching disabled - always stay on English
+    return;
   };
 
   const t = (key: string) => {
@@ -51,7 +47,7 @@ export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
     return {
-      language: "uz" as Language,
+      language: "en" as Language,
       setLanguage: () => {},
       t: (key: string) => key
     };

@@ -5,8 +5,7 @@ import LatestFeed from "@/components/sections/latest-feed";
 import AffiliatesSection from "@/components/sections/affiliates-section";
 import YouTubeFeed from "@/components/sections/youtube-feed";
 
-export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
+export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -14,7 +13,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <HeroSection />
         <AffiliatesSection />
         <LatestFeed />
-        <YouTubeFeed lang={lang} />
+        <YouTubeFeed lang="en" />
       </main>
       <Footer />
     </div>

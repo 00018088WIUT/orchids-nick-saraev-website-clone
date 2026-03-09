@@ -42,8 +42,8 @@
         ];
 
       return (
-        <section className="px-4 sm:px-6 mb-12 overflow-hidden w-full flex justify-center">
-          <div className="py-12 md:py-20 max-w-[1200px] w-full flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+        <section className="px-4 sm:px-6 mb-16 overflow-hidden w-full flex justify-center">
+          <div className="py-16 md:py-24 max-w-[1200px] w-full flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-20">
             
             {/* Profile Picture & Socials Column */}
             <div className="flex flex-col items-center gap-6 shrink-0">
@@ -58,7 +58,7 @@
               </div>
 
               {/* Socials - Under Image */}
-              <div className="flex gap-4 flex-wrap justify-center">
+              <div className="flex gap-3 flex-wrap justify-center max-w-[300px]">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
@@ -76,22 +76,22 @@
 
             {/* Text Content */}
             <div 
-              className="flex flex-col gap-6 md:gap-8 items-center md:items-start text-center md:text-left flex-1"
+              className="flex flex-col gap-8 items-center md:items-start text-center md:text-left flex-1 max-w-[650px]"
             >
               {/* Main Headline */}
-              <div className="space-y-4 md:space-y-5">
+              <div className="space-y-6">
                 <h1 
-                  className="font-bold tracking-tight text-[1.75rem] leading-[1.2] sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem] text-foreground font-display break-words"
+                  className="font-bold tracking-tight text-[2rem] leading-[1.15] sm:text-[2.25rem] md:text-[2.5rem] lg:text-[2.75rem] text-foreground font-display"
                 >
                   {t("hero.greeting")}<span className="text-primary">{t("hero.name")}</span>
                 </h1>
                 
-                <h2 className="font-semibold text-lg md:text-xl lg:text-2xl text-foreground/90 leading-snug">
+                <h2 className="font-medium text-[1.125rem] md:text-[1.25rem] lg:text-[1.375rem] text-foreground leading-relaxed max-w-[600px]">
                   {t("hero.title")}
                 </h2>
 
                 <p 
-                  className="font-light text-muted-foreground text-base md:text-lg leading-[1.8] font-sans"
+                  className="text-muted-foreground text-[1rem] md:text-[1.0625rem] leading-[1.75] font-sans max-w-[580px]"
                 >
                   {t("hero.description").split("Scrimba.com").map((part, i, arr) => (
                     <React.Fragment key={i}>
@@ -110,8 +110,6 @@
                   ))}
                 </p>
               </div>
-
-              {/* Subscription Form removed as requested */}
             </div>
           </div>
         </section>

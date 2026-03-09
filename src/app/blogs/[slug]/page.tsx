@@ -8,7 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface BlogPageProps {
-  params: Promise<{ slug: string; lang: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 // Calculate reading time (average 150 words per minute)
@@ -18,13 +18,13 @@ function getReadingTime(content: string): number {
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { slug, lang } = await params;
+  const { slug } = await params;
 
   const { data: blog, error } = await supabase
     .from("blogs")
     .select("*")
     .eq("slug", slug)
-    .eq("language", lang)
+    .eq("language", "en")
     .single();
 
   if (error || !blog) {
@@ -38,7 +38,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <Header />
       <main className="flex-1 max-w-[800px] mx-auto w-full py-12 px-4">
         <Link 
-          href={`/${lang}/blogs`}
+          href="/blogs"
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft size={16} />

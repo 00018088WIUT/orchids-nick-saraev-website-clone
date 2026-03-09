@@ -1,14 +1,14 @@
 "use client";
 
   import React, { useState, useEffect } from "react";
-  import { Menu, X, Globe } from "lucide-react";
+  import { Menu, X } from "lucide-react";
   import { useLanguage } from "@/components/language-provider";
   import Image from "next/image";
 
   const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { language, setLanguage, t } = useLanguage();
+    const { t } = useLanguage();
 
     useEffect(() => {
       const handleScroll = () => {
@@ -19,13 +19,9 @@
     }, []);
 
     const navItems = [
-      { label: t("nav.about"), href: `/${language}/about` },
-      { label: t("nav.blogs"), href: `/${language}/blogs` },
+      { label: t("nav.about"), href: `/about` },
+      { label: t("nav.blogs"), href: `/blogs` },
     ];
-
-    const toggleLanguage = () => {
-      setLanguage(language === "uz" ? "en" : "uz");
-    };
 
     return (
       <header 
@@ -35,7 +31,7 @@
           
             {/* Logo Section */}
             <div className="flex-1 flex justify-start items-center gap-3">
-              <a href={`/${language}`} className="flex items-center gap-2 shrink-0">
+              <a href="/" className="flex items-center gap-2 shrink-0">
                 <span className="text-xl font-bold tracking-tight text-foreground">
                   Ziyodulla Abdullayev
                 </span>
@@ -63,15 +59,6 @@
 
         {/* Action Buttons */}
         <div className="flex-1 flex items-center justify-end gap-2">
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border hover:bg-muted cursor-pointer transition-colors text-sm font-medium text-foreground"
-            aria-label="Toggle language"
-          >
-            <Globe className="w-4 h-4" />
-            <span>{language.toUpperCase()}</span>
-          </button>
-
           {/* Mobile Menu Toggle */}
           <button 
             className="flex lg:hidden items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-xl hover:text-primary transition-colors text-foreground"

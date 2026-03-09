@@ -54,7 +54,7 @@ export default function BlogsPage() {
               posts.map((post) => (
                 <Link
                   key={post.id}
-                  href={`/${language}/blogs/${post.slug}`}
+                  href={`/blogs/${post.slug}`}
                   className="group block"
                 >
                   <div className="flex flex-col gap-2">
